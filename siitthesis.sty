@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% SIIT Thesis Style
+%
+% Normally there is no need to edit this file. It should be called, using
+% \usepackage{siitthesis}, from thesis.tex.  
+%
+% \SVN $Revision: 843 $
+% \SVN $Author: sgordon $
+% \SVN $Date: 2014-05-14 11:12:48 +0700 (Wed, 14 May 2014) $
+% \SVN $URL: https://sandilands.info/svn/Common/Styles/siitthesis/siitthesis.sty $
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\NeedsTeXFormat{LaTeX2e}[1998/12/01]
+\ProvidesPackage{siitthesis}[2014/05/12, v0.1, Steve Gordon, SIIT Thesis Style. 2022/06/08, v0.2, Somsak Kittipiyakul, updated to new SIIT requirements and Biblatex. 2025/02/13, v0.3, Itthisek Nilkhamhang, updated Director name, minor formatting changes.]
+
+% Required packages
+\RequirePackage{setspace} % Need for line spacing on title/signature page
+\RequirePackage{mathptmx} % Times font for text and math
+\RequirePackage{listings} % Include formatted source code listings (this package 
+                      % is not actually needed, however if you remove it then
+                      % you must comment out all references to listings in 
+                      % this file and in thesis.tex)
+
+% Page layout
+\setlength{\oddsidemargin}{0.188in}  % 1.15in left margin 
+\setlength{\evensidemargin}{0.188in} % 1.15in left margin (even pages)
+\setlength{\topmargin}{0.0in}       % 1in top margin
+\setlength{\textwidth}{6.085in}       % 5.76in text - 1.25in rt margin
+\setlength{\textheight}{9.69in}        % Body ht for 1in margins
+\addtolength{\topmargin}{-\headheight}  % No header, so compensate
+\addtolength{\topmargin}{-\headsep} % for header height and separation
+%\flushbottom
+
+% Rename Tables and References
+\renewcommand{\bibname}{REFERENCES}
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\newcommand{\listsymbolname}{LIST OF SYMBOLS/ABBREVIATIONS}
+\renewcommand{\lstlistlistingname}{LIST OF LISTINGS}
+
+% TOC includes 1., 1.1, 1.1.1, 1.1.1.1
+\setcounter{tocdepth}{2}
+
+% Set numbering to sub-subsection as well
+\setcounter{secnumdepth}{3}
+
+% Start TeX commands
+\makeatletter
+
+% Add space after chapters in TOC
+\renewcommand\chapter{%
+\if@mainmatter
+%  \addtocontents{toc}{\protect\addvspace{15\p@}}%
+  \addtocontents{toc}{\protect\addvspace{1\p@}}% adds 1 pt of vertical space to the table of contents on each use of the \chapter command.
+\fi
+\if@openright\cleardoublepage\else\clearpage\fi
+                    \thispagestyle{fancy}%
+                    \global\@topnum\z@		% Prevents figures from going at top of page, \z@ is a LaTeX “constant” that's defined to be zero
+                    \@afterindentfalse
+                    \secdef\@chapter\@schapter
+                    }
+
+% Add how /chapter shows in TOC.
+% For normal chapters, write as Chapter 1 Introduction.
+% For appendices, include appendix letter in TOC and heading
+\def\@chapter[#1]#2{ \ifnum \c@secnumdepth >\m@ne % IF secnumdepth > -1 THEN
+                       \if@mainmatter % if within the mainmatter e.g. Chapter 1
+                         \refstepcounter{chapter}% reset the chapter number for the main
+                         \typeout{\@chapapp\space\thechapter.}% print to the terminal and log file
+                         \addcontentsline{toc}{chapter}%			add chapter header
+                                   {\protect\numberline{\thechapter}#1}% eg. Chapter 1 Title
+                       \else % e.g. appendix
+                         \refstepcounter{chapter}% reset the chapter number for the appendices
+                         \typeout{\@chapapp\space\thechapter.}% 
+                         \addcontentsline{toc}{chapter}%		add appendix header
+%						 {\@chapapp\space\thechapter:\space#1}% e.g. Appendix A Title
+						 {\qquad\enspace \uppercase{\@chapapp} \space\thechapter}% e.g. Appendix A, with no title. Use \qquad (2em) and \enspace (0.5em) to indent.
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+
+% Change font size of chapter headings
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \centering \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \if@mainmatter
+        \LARGE\bfseries \MakeUppercase\@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \else
+        \LARGE\bfseries \MakeUppercase\@chapapp\space \thechapter
+        \par\nobreak
+        \vskip 20\p@
+      \fi
+    \fi
+    \interlinepenalty\@M
+    \LARGE \bfseries \MakeUppercase #1\par\nobreak
+    \vskip 40\p@
+  }}
+
+% Change font size of chapter* headings
+\def\@makeschapterhead#1{
+  \vspace*{50\p@}
+  {\parindent \z@ \centering
+    \normalfont 
+    \interlinepenalty\@M
+    \LARGE 
+    \bfseries  #1\par\nobreak
+    \vskip 40\p@
+  }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Add headings for table of contents, list of figures and tables
+\renewcommand\tableofcontents{%
+  \parindent\z@
+  \chapter*{\contentsname}
+%  \vskip 12\p@  
+%  \large % make what come after like Page, ABSTRACT in large fontsize
+  \hfill Page
+%  \vskip 12\p@
+  \@starttoc{toc}%
+}
+\renewcommand\listoffigures{%
+  \parindent\z@
+  \chapter*{\listfigurename}
+  \vskip 12\p@  % leave space after LIST OF FIGURES
+%  \large 
+  Figures\hfill Page
+  %\vskip 0\p@
+  \@starttoc{lof}%
+}
+\renewcommand\listoftables{%
+  \parindent\z@
+  \chapter*{\listtablename}
+  \vskip 12\p@  
+%  \large 
+  Tables\hfill Page
+  %\vskip 0\p@
+  \@starttoc{lot}%
+}
+
+\renewcommand*{\lstlistoflistings}{%
+  \chapter*{\lstlistlistingname}
+  \vskip 12\p@  
+  \textbf{\large Listing\hfill Page}
+  %\vskip 12\p@
+  \@starttoc{lol}%
+}
+
+
+% Add space in table of contents when starting backmatter
+\renewcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \@mainmatterfalse%
+\addtocontents{toc}{\protect\addvspace{15\p@}}
+}
+
+% Format/width of TOC lines
+\renewcommand{\@dotsep}{10000}
+\renewcommand*\l@chapter{\@dottedtocline{1}{1.8em}{2.4em}}
+\renewcommand*\l@section{\@dottedtocline{2}{4.2em}{1.8em}}
+\renewcommand*\l@subsection{\@dottedtocline{3}{6.0em}{2.4em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{2.0em}{3.4em}}
+%\renewcommand*\l@figure{\@dottedtocline{1}{1.8em}{2.4em}}
+
+% remove indent in list of figures/tables
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% Default: 1.5em/2.3em
+\renewcommand*\l@table{\@dottedtocline{1}{0em}{2.3em}}% Default: 1.5em/2.3e
+% we can also copy the command in \l@figure into \l@table as 
+% \let\l@table\l@figure
+
+% Font sizes
+\renewcommand\large{\@setfontsize\large{13}{17}}
+\renewcommand\Large{\@setfontsize\Large{14}{18}}
+\renewcommand\LARGE{\@setfontsize\LARGE{15}{19}}
+\renewcommand\huge{\@setfontsize\LARGE{17}{21}}
+
+
+% End TeX Commands
+\makeatother
+
+% To fix the problem with disappearning Appex xx. Since the appendix title is now shown in TOC, we can just show it as a large text.
+\newcommand{\appendixchaptername}[1]{
+	\vspace{-3mm}
+	\begin{center}
+	\Large{\textbf{\uppercase{#1}}}
+	\end{center}
+	}
+

@@ -1,0 +1,46 @@
+% \chapter{Night-time vehicle detection}
+\chapter{METHODOLOGY}
+\label{ch:chapter_3}
+
+This study evaluates the effectiveness of Large Language 
+Models (LLMs) in grading Thai-language written questions, 
+aligning results with Bloom’s Taxonomy and expert human 
+judgment. The process comprises five phases: question 
+classification, dataset preparation, system setup, comparative 
+evaluation, and data analysis.
+
+\section{Classifying Exam Questions based on Bloom’s Taxonomy}
+
+All of our written questions were categorized into Bloom’s six 
+cognitive levels by two experienced Thai educators. Independent 
+classifications were reconciled through consensus, ensuring 
+pedagogical alignment for subsequent model evaluation.
+
+\section{Dataset Collection and Preparation}
+
+The exam questions are divided into two sets:
+
+\begin{enumerate}
+    \item Rubric-Based Set: Rubrics were created per question using ChatGPT-extracted keywords (language accuracy, communication skills), verified by expert teachers.
+    \begin{figure}[H]
+        \centering
+        \fbox{\includegraphics[width=0.5\textwidth]{3.1_sample_prompt}}
+        \caption{Sample prompt used to extract key rubric keywords from Thai exam questions via ChatGPT (Please specify three main keywords from the following question to be used as criteria for evaluating and scoring the answer).}
+        \label{fig:3.1_sample_prompt}
+    \end{figure}
+    \item Non-Rubric Set: This set skips the rubric generation step to observe the LLMs’ raw interpretive grading ability without explicit criteria.
+\end{enumerate}
+
+Five LLMs (ChatGPT, Typhoon, Gemini, Grok, Claude) generated 
+10 sample student responses per question, each scored 0–3 with 
+explanations. Representative answers for each score level were 
+refined by professional teachers and stored in Excel for 
+contextual retrieval during grading. The prompt used was:
+
+% \bfigl{.7}{3.2_prompt_gen_student_ans}{Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.7\textwidth]{3.2_prompt_gen_student_ans}}
+  \caption{Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}
+  \label{fig:3.2_prompt_gen_student_ans}
+\end{figure}

@@ -1,0 +1,181 @@
+% \chapter{Introduction}
+\chapter{INTRODUCTION}\label{ch:intro}
+%\titlespacing\chapter{0pt}{0pt}{0pt}
+
+Education relies heavily on assessment as a means of evaluating student learning, guiding curriculum development, and informing teaching practices. 
+Among different assessment methods, written examinations stand out as a powerful tool for evaluating higher-order skills such as reasoning, problem-solving, and expressive ability. 
+However, grading written exams poses significant challenges, particularly in contexts where linguistic complexity, large class sizes, and teacher workload combine to create barriers to fair and consistent evaluation. 
+In Thailand, these challenges are even more pronounced due to the unique features of the Thai language and the increasing demand for efficiency in educational systems. This research addresses these issues 
+by proposing an AI-assisted grading framework that leverages Large Language Models (LLMs) and rule-based reasoning to improve the evaluation of Thai written exam responses.
+
+\section{Background and Motivation}
+Examinations remain one of the most critical tools in educational assessment, 
+serving as a benchmark for measuring students’ comprehension, knowledge retention, 
+and ability to apply concepts. Among different types of examinations, written exams 
+are particularly valuable because they provide a deeper insight into students’ higher-order 
+cognitive abilities, such as critical reasoning, logical explanation, problem-solving, and 
+language proficiency \citep{JungX2024}. Unlike multiple-choice questions that primarily measure recognition and recall, 
+written responses reveal students’ thought processes, creativity, and capacity for structured argumentation.
+
+Despite these advantages, written exam evaluation presents significant challenges. 
+Traditional manual grading is time-consuming, resource-intensive, and often inconsistent. 
+Human evaluators, including teachers and teaching assistants (TAs), are susceptible to fatigue, 
+emotional states, and subjective interpretation, which may lead to inconsistency in grading outcomes \citep{Mansson2016}. 
+Even when grading rubrics are provided, variations in understanding and application among 
+TAs may result in uneven assessment standards.
+
+% \cite{Garlotta2001} stated that “Sirindhorn International Institute of Technology
+% (SIIT) offers three master of engineering programs, namely, Master of Engineering
+% Program in Engineering Technology, Master of Engineering Program in Information and 
+% Communication Technology for Embedded Systems, and Master of Engineering 
+% Program in Logistics and Supply Chain Systems Engineering” (Section~\ref{ss:ref}).
+
+\section{Challenges in the Thai Language Context}
+
+In the Thai educational context, the grading of written responses is further 
+complicated by the unique linguistic and structural properties of the Thai 
+language. Thai grammar is highly flexible, allowing for multiple valid 
+sentence constructions. The language is tonal, meaning word meaning can 
+change depending on pitch, and it contains numerous context-dependent 
+exceptions \citep{Tongsilp2024}. Moreover, Thai writing omits spaces between words, which 
+complicates segmentation and tokenization processes required for 
+computational analysis.
+
+These linguistic features make it particularly difficult for evaluators to 
+interpret student responses accurately, especially when assessing reasoning, 
+argumentation, or nuanced explanations. Teachers must balance linguistic 
+expertise with an understanding of the subject matter and grading criteria. 
+Given the open-ended nature of written responses, the risk of 
+misinterpretation and grading bias is substantially higher compared to 
+multiple-choice formats.
+
+As a result, many Thai educators prefer multiple-choice examinations, which 
+are quicker and easier to grade. This choice, however, comes at the expense 
+of assessing higher-order skills. On average, teachers in Thailand manage 
+classes of 100–400 students per subject while teaching 7–21 hours weekly 
+and handling administrative, extracurricular, and pastoral 
+responsibilities \citep{Goksoy2014}. Such workloads leave little room for the detailed 
+evaluation of written work, leading to an overreliance on more easily 
+graded exam types.
+
+% The study performed by \cite{Tokiwa2006} showed that Sirindhorn
+% International Institute of Technology (SIIT) offers three master of engineering
+% programs, namely, Master of Engineering Program in Engineering Technology, Master 
+% of Engineering Program in Information and Communication Technology for Embedded 
+% Systems, and Master of Engineering Program in Logistics and Supply Chain Systems
+% Engineering \citep{Bocchini2013, Montanari2003}. 
+
+\section{Limitations of Current Assessment Practices}
+
+Although multiple-choice exams are efficient, they fail to capture the 
+richness of student reasoning, creativity, and expressive ability 
+\citep{scouller1998influence, birenbaum1997alternative}. 
+Written exams, despite their resource-intensive nature, remain the most 
+effective tool for evaluating comprehensive understanding and critical 
+thinking \citep{gipps2011beyond, gierl2017automated}. 
+This creates a tension between educational goals and practical 
+constraints.
+
+In recent years, efforts to explore the potential of LLMs in grading have included rubrics, 
+peer evaluation, and partial automation through keyword-based scoring 
+systems \citep{lu2021automatic, ridley2022automated}. 
+However, these approaches often fall short due to the complexities 
+of natural language and the diversity of student expression. Rule-based 
+systems, for instance, can detect certain patterns but struggle with 
+semantic nuances, paraphrasing, and context-dependent meaning 
+\citep{dikli2006automated, shermis2014state}.
+
+\section{Role of Bloom’s Taxonomy in Assessment}
+
+Bloom’s Taxonomy provides a structured framework for categorizing cognitive skills, 
+ranging from basic recall of facts to higher-order reasoning and critical thinking 
+\citep{bloom1956taxonomy,anderson2001taxonomy}. 
+In the context of this research, Bloom’s Taxonomy serves two important purposes. 
+
+First, it provides a pedagogical lens for understanding the type of cognitive 
+process each exam question is designed to assess. This ensures that grading 
+criteria align with intended learning outcomes \citep{krathwohl2002revision}. 
+
+Second, Bloom’s levels are used as a pre-screening mechanism for the 
+AI-assisted framework. Each exam question is labelled with a Bloom’s 
+category by expert teachers, and this label is then used to guide 
+model selection. In practice, different types of questions 
+(e.g., recall vs. analysis) may be better handled by different LLMs or 
+combinations of LLM and rule-based reasoning \citep{zohar2004higher,stanny2016reexamining}. 
+
+By integrating Bloom’s Taxonomy into the framework, the system 
+acknowledges both pedagogical validity and technical feasibility, 
+linking educational theory with AI-based proof-of-concept evaluation.
+
+
+\section{Advances in Natural Language Processing (NLP)}
+
+Recent breakthroughs in Natural Language Processing (NLP) and the advent 
+of Large Language Models (LLMs) have opened new possibilities for automated 
+exam evaluation \citep{Agarwal2021}. LLMs demonstrate strong capabilities in tasks such as 
+text classification, summarization, sentiment analysis, and automated 
+evaluation across multiple languages. Unlike traditional rule-based methods, 
+LLMs leverage deep learning and attention mechanisms to capture contextual 
+meaning, making them suitable for handling open-ended and nuanced responses.
+
+For the Thai language, the application of LLMs introduces unique 
+opportunities and challenges. While most existing LLMs are trained 
+primarily on English or other widely spoken languages, recent developments 
+have included multilingual models capable of handling Thai to varying 
+degrees. By integrating LLMs with rule-based reasoning, it may be possible 
+to design a hybrid evaluation framework that combines the flexibility and 
+contextual understanding of LLMs with the consistency and transparency of 
+structured rules.
+
+\section{Research Motivation and Contribution}
+
+The motivation behind this research is twofold:
+\begin{enumerate}
+    \item To reduce the grading burden on Thai teachers while improving fairness and consistency in written exam evaluation.
+    \item To promote the wider adoption of open-ended questions in Thai education, thereby encouraging the development of critical reasoning, creativity, and expressive skills in students.
+\end{enumerate}
+
+This thesis aims to develop an AI-assisted grading framework for 
+Thai-language written exam questions. By leveraging LLMs in combination 
+with rule-based reasoning, the framework is designed to enhance accuracy, 
+consistency, and efficiency in grading, while maintaining interpretability 
+for educators.
+
+The expected contributions of this research are as follows:
+\begin{itemize}
+    \item A comprehensive analysis of challenges in grading Thai written responses.
+    \item A proof-of-concept framework combining LLMs and rule-based reasoning.
+    \item Empirical evaluation of the framework’s performance compared to human graders.
+    \item Insights into the broader implications for educational assessment and curriculum design.
+\end{itemize}
+
+\section{Research Objectives}
+
+The objectives of this research are as follows:
+\begin{enumerate}
+    \item To investigate the challenges and limitations in grading Thai written exam responses.
+    \item To design a proof-of-concept AI-assisted grading framework that integrates LLMs with rule-based reasoning.
+    \item To evaluate the framework’s effectiveness against human grading in terms of fairness, consistency, and interpretability.
+    \item To provide insights into how such frameworks may support, rather than replace, teachers in Thai educational contexts.
+\end{enumerate}
+
+\section{Scope of the Study}
+
+This study is limited to the following scope:
+\begin{enumerate}
+    \item Focuses on Thai-language written exam questions at the secondary school level.
+    \item Examines only short-answer and essay-type responses (0–3 scoring scale).
+    \item Uses a proof-of-concept approach with selected LLMs and teacher-designed rubrics.
+    \item Each exam question is pre-classified into Bloom’s Taxonomy levels by expert teachers, and these labels are used to guide model selection within the framework.
+    \item The framework is evaluated on fairness, consistency, and interpretability, but not on large-scale deployment or integration into actual school systems.
+\end{enumerate}
+
+\section{Structure of the Thesis}
+
+The remainder of this thesis is organized as follows:
+\begin{itemize}
+    \item \textbf{Chapter 2 – Literature Review}: Reviews existing work on exam evaluation, NLP in education, and applications of LLMs in AI-assisted grading frameworks.
+    \item \textbf{Chapter 3 – Methodology}: Describes the proposed framework, including data collection, preprocessing, model selection, and rule-based integration.
+    \item \textbf{Chapter 4 – Result and Discussion}: Presents the experimental findings, discusses the strengths and limitations of the framework, and compares it with baseline methods.
+    \item \textbf{Chapter 5 – Conclusion and Future Work}: Summarizes key findings, highlights contributions, and suggests directions for future research.
+\end{itemize}

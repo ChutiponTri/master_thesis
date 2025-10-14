@@ -1,0 +1,17 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Opportunities and Challenges of LLMs in Educational Assessment. Source: \blx@tocontentsinit {0}\textcite {Vajjala2025}}}{7}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Comparison of Single-Model vs. Ensemble Approaches in LLM Applications}}{8}{figure.caption.11}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sample prompt used to extract key rubric keywords from Thai exam questions via ChatGPT (Please specify three main keywords from the following question to be used as criteria for evaluating and scoring the answer).}}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}}{13}{figure.caption.13}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Our institute logos}}{16}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Texmaker Configuration to use Biblatex}}{17}{figure.caption.15}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces TU Logo}}{19}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces SIIT Logo}}{20}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces An analog voltage source.}}{21}{figure.caption.21}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsfinish 

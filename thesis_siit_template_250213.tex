@@ -1,0 +1,478 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% SIIT Thesis Template
+%
+% Instructions
+% 1. In this file (thesis.tex) you should edit:
+%    a. Thesis Data, e.g. title, author
+%    b. Committee members on the Signatures page
+%    c. Chapters, adding/deleting chapters
+%    d. Appendices, adding/deleting appendices 
+% (if you have only one appendix, you must use Appendix instead.)
+%
+% 2. Optionally, in this file you may edit:
+%    a. Packages, adding/deleting required LaTeX packages
+%    b. Authors Commands, adding/deleting your own LaTeX commands
+%    c. Remove the inclusion of acrynoms
+%    d. References, to switch to a .bbl file
+% 
+% 3. The main content of the thesis should be in the following files:
+%    a. ack.tex
+%    b. abstract.tex
+%    c. acronyms.tex (optional)
+%    d. chapter1.tex, chapter2.tex, ...
+%    e. appendixA.tex, appendixB.tex, ...
+%    f. thesis_ref_new.bib (if using BibTeX) or refs.tex (if manual editing refs)
+%
+% \SVN $Revision: 840 $
+% \SVN $Author: sgordon $
+% \SVN $Date: 2014-05-12 13:39:14 +0700 (Mon, 12 May 2014) $
+% \SVN $URL: https://sandilands.info/svn/Common/Styles/siitthesis/thesis.tex $
+% Revised by somsakk, May 2022.
+% Revised by itthisek, Feb 2025.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\documentclass[12pt,a4paper,oneside]{book}
+%\documentclass[12pt,a4paper,openany]{book}
+\documentclass[12pt,a4paper,oneside,openany]{book}
+
+% Packages needed for Thesis
+\include{thesis_packages}
+
+%%%%%%%%%%% Forcing use of Times New Roman Font %%%%%%%%%%%%%%%%%%%%%%%%
+%% Requires including the following package in the thesis_packages.tex >> \usepackage{fontspec} << and requires XeLaTeX compiler
+% \setmainfont{Times New Roman}
+
+%% Put your bibliography (.bib) file. Don't forget to include the .bib extension 
+\addbibresource{thesis_ref_new.bib}
+
+% You may put your own macros in thesis_macros.tex
+\include{thesis_macros}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Picture Path. Put your pictures in this Picture/ folder.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\graphicspath{{./Picture/}}
+%------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Thesis Data
+% (edit each field)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% Thesis Title in mixed case
+\newcommand{\thesistitle}{\uppercase{AI Assisted Grading Framework for Thai-Language Written Exam Questions based on LLM and Rule-Based Reasoning Approach}}
+
+% Student name (author of the thesis)
+\newcommand{\thesisauthor}{Chutipon Trirattananurak}  % Don't put Mr. or Ms. 
+
+% Degree that this thesis is for
+\newcommand{\thesisdegree}{Master of Engineering (Artificial Intelligence and Internet of Things)}
+
+% Month and year of thesis publication (obtained from SIIT)
+\newcommand{\thesisdate}{June 6, 2025}
+
+% Academic year for thesis submission
+\newcommand{\thesisyear}{2025}
+
+% Institute/department 
+\newcommand{\thesisinstitute}{Sirindhorn International Institute of Technology}
+
+% University 
+\newcommand{\thesisuni}{Thammasat University}
+
+% Degrees that student already has; separate degrees with \\. 
+%\newcommand{\thesispastdegrees}{Bachelor of Engineering (Electronic and Communication Engineering), Sirindhorn International Institute of Technology, 2013\\Master of Engineering (Information and Communication Technology for Embedded Systems), Sirindhorn International Institute of Technology, Thammasat University, 2015\\ Doctoral of Philosophy,  Engineering and Technology, Sirindhorn International Institute of Technology, 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Font Cover
+% (do not edit)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\begin{document}
+\frontmatter
+\setlength{\parskip}{0pt plus1pt minus1pt}
+\pagestyle{empty}
+\begin{center}
+\begin{spacing}{1}
+	\begin{figure}[h]
+		\center
+		\includegraphics[width=0.2\textwidth]{Picture/thammasat.png}
+	\end{figure}
+\end{spacing}
+\vspace*{10mm}
+	\textbf{\Large\MakeUppercase\thesistitle}\\
+\vspace*{40mm}
+\textbf{BY}\\
+\vspace*{10mm}
+\textbf{\MakeUppercase\thesisauthor}
+%\vfill
+\vspace*{40mm}
+\begin{spacing}{1.3}
+\textbf{
+A DISSERTATION SUBMITTED IN PARTIAL FULFILLMENT OF\\
+THE REQUIREMENTS FOR THE DEGREE OF MASTER OF\\
+ENGINEERING (ARITIFICIAL INTELLIGENCE AND INTERNET OF THINGS)\\
+%\MakeUppercase\thesisdegree\\
+\MakeUppercase\thesisinstitute\\
+\MakeUppercase\thesisuni\\
+ACADEMIC YEAR \thesisyear\\
+% COPYRIGHT OF THAMMASAT UNIVERSITY\\ % removed 2/8/22
+}
+\end{spacing}
+\end{center}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Title Page
+% (do not edit)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% remove this page. Not needed anymore.
+%\pagestyle{empty}
+%\begin{center}
+%\vspace*{6mm}
+%\begin{spacing}{1.4}
+%\textbf{\Large\MakeUppercase\thesistitle}
+%\end{spacing}
+%\vspace*{40mm}
+%\textbf{BY}\\
+%\vspace*{10mm}
+%\textbf{\MakeUppercase\thesisauthor}
+%%\vfill
+%\vspace*{70mm}
+%\begin{spacing}{1.3}
+%\textbf{
+%A DISSERTATION SUBMITTED IN PARTIAL FULFILLMENT OF\\
+%THE REQUIREMENTS FOR THE DEGREE OF DOCTOR OF\\
+%PHILOSOPHY (ENGINEERING AND TECHNOLOGY)\\
+%%\MakeUppercase\thesisdegree\\
+%\MakeUppercase\thesisinstitute\\
+%\MakeUppercase\thesisuni\\
+%ACADEMIC YEAR \thesisyear\\
+% COPYRIGHT OF THAMMASAT UNIVERSITY\\
+%}
+%\end{spacing}
+%\end{center}
+%\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Signatures
+% (only edit the table of thesis committee)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\addcontentsline{toc}{section}{Signature Page}
+%\vspace*{2mm}
+\begin{center}
+\vspace*{10mm}
+\MakeUppercase\thesisuni\\
+\MakeUppercase\thesisinstitute\\
+\vspace*{5mm}
+DISSERTATION\\
+\vspace*{5mm}
+BY\\
+\vspace*{5mm}
+\MakeUppercase\thesisauthor\\
+\vspace*{5mm}
+ENTITLED\\
+\vspace*{5mm}
+\MakeUppercase\thesistitle\\
+\vspace*{5mm}
+was approved as partial fulfillment of the requirements for\\
+the degree of Master of Engineering (Artificial Intelligence and Internet of Things)\\
+\vspace*{4mm}
+on \thesisdate\\
+\end{center}
+\vspace*{0mm}
+\begin{table}[h]
+%\setlength{\tabcolsep}{0.7ex}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+\begin{tabularx}{\textwidth}{llR}
+%%============================================================================
+%% Example for PhD Thesis
+Chairperson & & \\
+\cline{3-3} & & \raisebox{-1.5ex}{(Assistant\ Professor\  Seksan Laitrakan, Ph.D.)}\\[3.5ex]
+Member and Advisor && \\ \cline{3-3} 
+ &&\raisebox{-1.5ex}{(Assistant\ Professor\  Sasiporn Usanavasin, Ph.D.)}\\[3.5ex]
+Member and Co-advisor &&\\ \cline{3-3}
+ &&\raisebox{-1.5ex}{(Chaianun Damrongrat, Ph.D.)}\\[3.5ex]
+Member&&\\ \cline{3-3} 
+&&\raisebox{-1.5ex}{(Professor\ Manabu Okumura, Ph.D.)}\\[3.5ex]
+Member&&\\ \cline{3-3} 
+&&\raisebox{-1.5ex}{(Firstname Lastname, Ph.D.)}\\[3.5ex]
+Director &&\\ \cline{3-3}
+&&\raisebox{-1.5ex}{(Associate\ Professor\  Kriengsak Panuwatwanich, Ph.D.)}\\[3.5ex]
+%
+%%External Examiner: Prof.\ Dr.\ Alagan Anpalagan\\[3.5ex]
+%%============================================================================
+\end{tabularx}
+\end{table}
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Abstract
+% (do not edit here; instead edit the file abstract.tex)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%\pagestyle{plain}
+%%\setcounter{page}{1}
+ 
+% \pagestyle{fancy}
+% \setcounter{page}{1}
+% \pagenumbering{Roman} %Roman/roman/arabic
+% \fancyhf{} % sets both header and footer to nothing
+% \renewcommand{\headrulewidth}{0pt}
+% %\fancyhead[R]{(\thepage)} 	%keeps round bracket with arabic, (1), but not () seen in toc list
+% \fancyhead[R]{\thepage} 	%keeping () makes round bracket, but not in toc list
+
+\pagestyle{fancy}
+\pagenumbering{arabic}  % Show page number in ROMAN
+%% remove space of number in parenthesis, like ( 1 ) 
+\renewcommand*{\thepage}{(\arabic{page})}
+%\renewcommand*{\thepage}{(~\arabic{page}~)}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+
+
+%% add ABSTRACT as a chapter in Table of Contents.
+\addcontentsline{toc}{chapter}{ABSTRACT}
+%\chapter*{ABSTRACT}
+%
+\begin{table} [H]
+ %\begin{minipage}{3cm}
+ \begin{center}
+  % \begin{adjustbox}{width=1.0 \textwidth}
+  \begin{tabular}{p{5.8cm} p{8.2cm}}
+   %\hline\noalign{\smallskip}
+   Dissertation Title & \thesistitle
+   \\
+   Author          & \thesisauthor \\
+   Degree            & Master of Engineering (Artificial Intelligence\\
+   &and Internet of Things)\\
+   Faculty/University & Sirindhorn International Institute of Technology/ Thammasat University  \\
+   Dissertation Advisor     & Assistant Professor Sasiporn Usanavasin, Ph.D.                                                               \\
+   Dissertation Co-Advisor  & Chaianun Damrongrat, Ph.D.                                                                             \\
+   Academic Years     & \thesisyear \\
+  \end{tabular}
+  %\end{adjustbox}
+ \end{center}
+\end{table}
+
+%
+\vspace*{10mm}
+\begin{center}
+\textbf{\LARGE ABSTRACT}
+\end{center}
+\vspace*{10mm}
+\indent
+
+\input{abstract}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Acknowledgement
+% (do not edit here; instead edit the file ack.tex)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+\chapter*{ACKNOWLEDGEMENTS}
+{ 
+\parindent0.5in
+\indent
+\input{ack}
+}
+
+\clearpage
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Table of Contents, Figures and Tables
+% (comment/uncomment any tables/lists that you desire)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%% Remove Table of Contents list in the Table of Contents.
+%\addcontentsline{toc}{chapter}{TABLE OF CONTENTS}
+
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\listoftables
+
+\newpage
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\listoffigures
+\newpage
+
+%\addcontentsline{toc}{section}{List of Listings}
+%\lstlistoflistings
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% List of Acronyms (Optional)
+% (do not edit here;instead edit the file acronyms.tex)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\chapter*{\listsymbolname}
+\addcontentsline{toc}{chapter}{\listsymbolname}
+\vspace{1em} % add space before the table
+\input{acronyms1}
+% \input{acronyms2}
+% \input{acronyms3}
+% \input{acronyms4}
+% \input{acronyms5}
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Chapters
+% (edit the files chapter1.tex, chapter2.tex, ...)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\mainmatter % start the chapter numbering as 1,2,..
+
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+
+\setlength{\parindent}{0.5in}
+\clearpage
+\include{chapter_01}
+\include{chapter_02}
+\include{chapter_03}
+\include{chapter_04}
+\include{chapter_05}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% References
+% (\bibliography refers to your BibTeX .bib file, e.g. refs.bib)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\backmatter % start the chapter (appendix) numbering as A,B,,..
+
+\cleardoublepage % needed to ensure TOC page number is correct
+%% There is still a bug with the PDF hyperlink: clicking on the References
+%% link in the PDF takes you to last page of previous chapter, not to start
+%% of references
+\addcontentsline{toc}{chapter}{REFERENCES}
+\printbibliography[title=REFERENCES]
+
+%or
+%\input{thesis_ref}
+%% In the final version of your thesis you may copy the generated .bbl file
+%% to a .tex file (e.g. copy thesis.bbl to refs.tex) and input that .tex 
+%% file. This allows you to make minor manual edits to the references.
+%% Uncomment the following line; comment out the two above commands.
+%\input{refs}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Appendices
+% (edit the files appendixA.tex, appendixB.tex, ...)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%=========Add 1 page before Appendix===============
+\newpage
+\addtocontents{toc}{\protect\addvspace{15pt}}
+\addcontentsline{toc}{chapter}{APPENDICES}
+%\addcontentsline{toc}{chapter}{APPENDIX} % change to this if only one appendix chapter
+\topskip0pt
+\vspace*{\fill}
+\hfill 
+\textbf{\LARGE \uppercase{Appendices}}
+%\textbf{\LARGE \uppercase{Appendix}}  % change to this if only one appendix chapter
+\hfill
+\vspace*{\fill}
+\newpage
+
+%%%=========Customize depth layer of Appendix in Table of Content===============
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+%\makeatletter
+%\addtocontents{toc}{%
+%%  \begingroup
+%  \let\protect\l@chapter\protect\l@section
+%%  \let\protect\l@section\protect\l@subsubsection
+%%  \let\protect\l@subsection\protect\l@subsubsection
+%}
+%\makeatother
+%%=========Customize depth layer of Appendix in Table of Content===============
+\appendix
+%\begin{appendices}
+\input{appendixA}
+\input{appendixB}
+%\end{appendices}
+
+
+% must put back tocdepth to 1, otherwise list of tables and list of figures are empty
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Acknowledgement
+% (do not edit here; instead edit the file ack.tex)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\newpage
+
+\addcontentsline{toc}{chapter}{BIOGRAPHY}
+\chapter*{BIOGRAPHY}
+% Use full names.
+
+\begin{table}[h]
+\begin{tabular}{p{0.3\textwidth} l}
+%%============================================================================
+Name & \thesisauthor \\[0cm] \\ 
+%Date of Birth &&&&& \hspace*{25mm}  March 31, 1980  \\ 
+Education & 2020: Bachelor of Engineering \\[0cm]\\
+& (Electrical Engineering) \\[0cm]\\
+& Thammasat University \\[0cm]\\
+& 2024: Master of Engineering \\[0cm]\\
+& (Artificial Intelligence and Internet of Things) \\[0cm]\\
+& \thesisinstitute \\[0cm]\\  
+& Thammasat University\\
+%%============================================================================
+\end{tabular}
+\end{table}
+
+\noindent
+\textbf{Publications}
+
+\begin{itemize}[label={},itemindent=-2em,leftmargin=2em]
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{1pt}
+  \setlength{\parsep}{2pt}
+%\begin{itemize}
+\item Institute, I. , Foo, M. E. , \& Gopinath, S. C. B. (2022). Feasibility of graphene in biomedical applications. to be appear in \textit{Biomedicine \& Pharmacotherapy}.
+
+\item Institute, I., Hanot, C. C., Choi, Y. S., Anani, T. B., Soundarrajan, D., \& David, A. E. (2015). Effects of iron-oxide nanoparticle surface chemistry on uptake kinetics and cytotoxicity in CHO- K1 cells. \textit{International Journal of Molecular Sciences, 17}(1), 226-230.
+
+\item Institute, I., Sinervo, A., \& Arkkio, A. (2012). Modeling two-pole cage induction machine equipped with embedded force actuator. \textit{Proceedings of $10^{th}$ International Conference on Vibrations in Rotating Machinery} (pp. 765-774). New York: Woodhead Publishing.
+\end{itemize}
+
+\end{document}
+

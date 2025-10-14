@@ -1,0 +1,177 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% New Commands
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\unirand}{\ensuremath{\stackrel{\mathrm{\$}}{\leftarrow}}} %Uniform Random
+\newcommand{\textunderscript}[1]{$_{\text{#1}}$}
+%------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Define Math Symbol
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\captionsetup{compatibility=false}
+%------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Define Theorem
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\long\def\comment#1{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\def\qed{\hfill $\Box$}
+%------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Comment
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+% \renewcommand{\baselinestretch}{2}
+\newcommand{\ksedit}[1]{\textcolor{blue}{#1}}
+\renewcommand{\ksedit}[1]{#1}
+%\renewcommand{\ksedit}[1]{}
+\newcommand{\sgnote}[1]{\textcolor{red}{\textbf{[SG: #1]}}}
+\renewcommand{\sgnote}[1]{}
+%------------------------------------------------------------------
+
+%% Note for editor/advisor, e.g. \ednote{Add a new paragraph}
+\newcommand{\ednote}[1]{\textbf{Edit: #1}}
+
+%%% For writing the vector
+\newcommand*{\vv}[1]{\vec{\mkern0mu#1}}
+
+%%% Somsak's macros
+%% For biber. Some of the commands in Bibtex such as \citep and \cite are not defined
+%% or behave differently in Biber. 
+\newcommand{\citep}{\parencite}
+\renewcommand{\cite}{\textcite}
+\newcommand{\citet}{\textcite}
+
+\newcommand{\np}{\newpage}
+\newcommand{\rt}[1]{Theorem~\ref{#1}}
+\newcommand{\bpf}{\begin{proof}}
+\newcommand{\epf}{\end{proof}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqn}{\[}
+\newcommand{\eeqn}{\]}
+%\newcommand{\beq}{\begin{eqnarray}}
+%\newcommand{\eeq}{\end{eqnarray}}
+%\newcommand{\beqn}{\begin{eqnarray*}}
+%\newcommand{\eeqn}{\end{eqnarray*}}
+\newcommand{\reqn}[1]{Equation~(\ref{#1})}
+\newcommand{\reprop}[1]{Proposition~\ref{#1}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\ignore}[1]{{}}
+\newcommand{\rem}{Remark:}
+\newcommand{\rfig}[1]{{Figure~\ref{#1}}}
+\newcommand{\rtab}[1]{{Table~\ref{#1}}}
+\newcommand{\rqt}[1]{Q.~\ref{#1}}
+\renewcommand{\it}{\item}
+
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{fact}{Fact}[chapter]
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newtheorem{note}{Note}[chapter]
+\newtheorem{claim}{Claim}
+\newtheorem{step}{Step}
+\newtheorem{ex}{{\em Example}}[chapter]
+\newtheorem{assumption}{Assumption}
+\newtheorem{approximation}{Approximation}
+\newtheorem{property}{Property}[chapter]
+\newtheorem{obs}{Observation}[chapter]
+\newtheorem{exer}{{\em Exercise}}[chapter]
+
+%% Electromagnetics
+\newcommand{\del}{\nabla}
+\newcommand{\pd}[2]{\frac{\partial{#1}_{#2}}{\partial #2}}
+\newcommand{\pda}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdda}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\dif}[2]{\frac{d #1}{d #2}}
+\newcommand{\ddif}[2]{\frac{d^2 #1}{d #2^2}}
+\newcommand{\sm}[1]{\triangle #1}
+
+\newcommand{\uvec}[1]{\vec{\mathbf{a}}_{#1}}
+%\newcommand{\uvec}[1]{\mathbf{a}_{#1}}
+\newcommand{\cvec}[1]{\vec{\mathbf{#1}}}
+\newcommand{\diff}{\mathrm{d}}
+
+\newcommand{\ux}{\uvec{x}}
+\newcommand{\uy}{\uvec{y}}
+\newcommand{\uz}{\uvec{z}}
+\newcommand{\ur}{\uvec{r}}
+\newcommand{\uR}{\uvec{R}}
+\newcommand{\utheta}{\uvec{\theta}}
+\newcommand{\uphi}{\uvec{\phi}}
+\newcommand{\urho}{\uvec{\rho}}
+\newcommand{\un}{\uvec{n}}
+
+\newcommand{\va}{\cvec{A}}
+\newcommand{\vA}{\cvec{A}}
+\newcommand{\vb}{\cvec{B}}
+\newcommand{\vB}{\cvec{B}}
+\newcommand{\vdb}{\cvec{d\mathbf{B}}}
+\newcommand{\vc}{\cvec{C}}
+\newcommand{\ve}{\cvec{E}}
+
+%\newcommand{\myframe}[1]{\begin{framed} #1 \end{framed}}
+\newcommand{\mf}[1]{\begin{framed} #1 \end{framed}}
+\newcommand{\hili}[1]{\textbf{\color{red} #1}}
+\newcommand{\bex}[1]{\mf{\begin{ex} #1 \end{ex}}}
+\newcommand{\bexer}[1]{\mf{\begin{exer} #1 \end{exer}}}
+\newcommand{\bnote}[1]{\mf{\begin{note} #1 \end{note}}}
+
+\newcommand{\bfig}[3]{\begin{figure}[H] \centering \includegraphics[width=#1\textwidth]{#2} 	\caption{#3} \end{figure}}
+
+\newcommand{\bfigl}[3]{\begin{figure}[H] \centering \includegraphics[width=#1\textwidth]{#2} 	\caption{#3} \label{#2} \end{figure}}
+
+\newcommand{\bfiglrotate}[4]{\begin{figure}[H] \centering \includegraphics[angle=#4,origin=c,width=#1\linewidth]{#2} 	\caption{#3} \label{#2} \end{figure}}
+
+\newcommand{\bfigll}[4]{\begin{figure}[H] \includegraphics[width=#1\textwidth]{#2} 	\caption{#3} \label{#4} \end{figure}}
+
+\newcommand{\bfigtwo}[5]{
+\begin{figure}[H]
+\begin{subfigure}{#1\textwidth}
+  \centering  \includegraphics[width=1\linewidth]{#2} 
+  \caption{} 
+\end{subfigure} \hfill
+\begin{subfigure}{#3\textwidth}
+  \centering  \includegraphics[width=1\linewidth]{#4} 
+  \caption{} 
+\end{subfigure}\hfill
+\caption{#5}
+\label{#2}
+\end{figure}
+}
+
+% \makeatletter
+% \newcommand{\unchapter}[1]{% FROM https://tex.stackexchange.com/a/624410/161015
+%    \begingroup
+%    \let\@makeschapterhead\@gobble % make \@makechapterhead do nothing
+%    \chapter*{#1}
+%    \addcontentsline{toc}{chapter}{#1}
+%    \markboth{#1}{}
+%    \endgroup
+%}
+%\makeatother

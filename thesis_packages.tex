@@ -1,0 +1,209 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+% Packages
+% (add/remove packages as needed)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% Required packages for thesis layout (do not remove)
+\usepackage{siitthesis} % Commands for formatting according SIIT thesis style
+
+% Other packages (add/delete packages as desired)
+%\usepackage{graphicx}
+%\usepackage{svn}
+%\usepackage[plainpages=false]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+%\usepackage[nobiblatex]{xurl}
+\usepackage{xurl}
+%\usepackage{url}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%\usepackage[dvips]{graphicx}
+\usepackage[fleqn]{amsmath}  % flush left equations, required by SIIT
+\usepackage{amsthm}
+\usepackage[varg]{txfonts}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{algorithm}
+%% Use algorithmicx which gives more functionality and flexibility than algorithmic package
+%\usepackage{algorithmic}
+\usepackage{algorithmicx,algpseudocode}
+\usepackage{cases}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{color}
+%\usepackage[singlelinecheck=false]{caption} % if want to align Table or Figure caption to left
+%\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{float}
+%\usepackage{cleveref}
+%\usepackage{cite} % should not be used with natbib
+
+%\usepackage[round,sort]{natbib} %for round bracket with apalike ref
+% Use Biber (new) instead of Bibtex (old). Use APA style for citation
+% and reference.
+\usepackage[style=apa]{biblatex} 
+%\usepackage[style=apa,natbib=true]{biblatex} % to use \citep; however, the command is redefined in this template.
+
+\usepackage{tabularx}
+%\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{booktabs}
+%\usepackage{ltablex}
+%\usepackage{fixmath}
+%%\usepackage{subfig}
+
+\usepackage{fancyhdr}
+
+%\usepackage{tikz} % for drawing
+%\usetikzlibrary{shapes.geometric, arrows} % for drawing flowcharts
+%\usepackage[siunitx]{circuitikz} % for drawing circuits
+
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1.4}
+
+%%% add indent in the first paragrapgh
+%\usepackage{indentfirst}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change section font size and spacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{titlesec}
+    
+% set spacing before and after heading
+% em = roughly the width of an 'M' (uppercase) in the current font (it depends on the font used)
+% ex = roughly the height of an 'x' (lowercase) in the current font (it depends on the font used)
+% See more in https://www.overleaf.com/learn/latex/Lengths_in_LaTeX
+\titlespacing\chapter{0pt}{2em}{1em}  % set 2em before and 1.5em after the chapter heading
+%\titlespacing\chapter{0pt}{12pt plus 4pt minus 2pt}{1.5em plus 2pt minus 2pt}
+\titlespacing\section{0pt}{1em}{1ex}
+\titlespacing\subsection{0pt}{1em}{1ex}
+\titlespacing\subsubsection{0pt}{1em}{1ex}
+
+\titleformat{\section}
+  {\normalfont\fontsize{13}{16}\bfseries}{\thesection}{1em}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Customize alignment page number of Table of content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum}
+\usepackage{titletoc}
+    \titlecontents{chapter}
+    [5em] %5.3
+    {\bigskip}
+    {\contentslabel[\MakeUppercase{\chaptername}~\thecontentslabel]{5.5em}}%\thecontentslabel
+    {\hspace*{-5.5em}}% unnumbered chapters
+    {\titlerule*[1pc]{}\contentspage}[\smallskip]%
+%
+ \titlecontents{section}
+ [2em] % indent for section
+ {\smallskip}
+ {\thecontentslabel\enspace}%\thecontentslabel
+ {\hspace*{-5.5em}}
+ {\titlerule*[1pc]{}\contentspage}%]
+
+ \titlecontents{subsection}
+ [2em] % indent for subsection
+ {\smallskip}
+ {\thecontentslabel\enspace}%\thecontentslabel
+ {\hspace*{-7.12em}}
+ {\titlerule*[1pc]{}\contentspage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Remove colon from figure's and table's caption
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[labelfont=bf]{caption}  % make Figure xx in bold
+%\captionsetup[table]{labelsep=space,justification=right,singlelinecheck=off}
+%\captionsetup[table]{labelsep=space,singlelinecheck=off}
+%\captionsetup[table]{labelsep=space,justification=centerlast,singlelinecheck=off,skip=0pt}
+\captionsetup[table]{labelsep=space,justification=raggedright,singlelinecheck=off,skip=0pt} % align Table caption to left
+\captionsetup[figure]{labelsep=space}
+
+%%% Required packages by Somsak
+\usepackage{framed}  % for framing a text bo
+\usepackage{xcolor}
+\captionsetup[subfigure]{labelfont=rm}  % use small letters for the subindexing
+\usepackage{rotating}% for sidewaysfigure
+\usepackage{listings}  % for code listing
+
+\usepackage[toc,page,title, titletoc]{appendix}
+
+%% Format of code listing fors ML (package: listings)
+\lstdefinelanguage[]{CPNML}[]{ML}{morekeywords={colset}}
+\lstset{%
+language=CPNML,
+basicstyle=\footnotesize,
+columns=flexible,
+}
+
+%% tocloft maybe an alternative to adjust TOC. Explore in future revision.
+%\usepackage{tocloft}
+%\renewcommand{\cftchapfont}{\normalfont\large\itshape} 
+%\renewcommand{\cftchapfont}{\normalfont} 
+
+
+%%%%%%%%%%% For plotting graphs %%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pgfplots}
+%%%%%%%%%%%%%%% For zooming the graph %%%%%%%%%%%%%%
+\usepgfplotslibrary{units}
+\usetikzlibrary{spy,backgrounds}
+\usepackage{pgfplotstable}
+
+%%%%%%%%% For multi-column in the table
+\usepackage{multirow}
+
+%%%%%%%%%%% For trikx axis %%%%%%%%%%%%%%%%%%%
+\usepackage{textcomp}
+\usepackage{float}
+%%%%%%%%%%%% For drawing flowchart %%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.misc}
+%% The trikz setup
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=white!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=white!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% list the item which tab indent after the first line
+\usepackage{enumitem}
+
+%%%%%%%%%%%%%%%%% Change the format of chapter title %%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\section}
+  {\normalfont\fontsize{13}{16}\bfseries}{\thesection}{1em}{}
+  
+%%%%%%%%%%% Change Chapter format
+\titleformat{\chapter}
+[display] % shape
+{\bfseries\Large}
+{
+%	\if@mainmatter%
+    		\centering%
+    		CHAPTER \ \thechapter%
+%    \else
+%    		\centering%
+%    		APPENDIX \ \thechapter%
+%    	\fi
+} % label
+{0.5ex} % sep
+{
+    \vspace{-1ex}
+    \centering
+    \MakeUppercase
+} % before-code
+[
+\vspace{-0.5ex}%
+] % after-code
+%\makeatother
+
+%%%%%%%%%%% For forcing Times New Roman %%%%%%%%%%%%%%%%%%%%%%%%
+% Requires 
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman}
+% \newfontfamily{\thaifont}{Tahoma}

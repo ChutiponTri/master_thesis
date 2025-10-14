@@ -1,0 +1,214 @@
+% \chapter{Literature review}
+\chapter{LITERATURE REVIEW}
+\label{ch:lit review}
+
+This chapter reviews prior work on automated exam evaluation, 
+the use of large language models (LLMs) in education, and cognitive 
+assessment frameworks. The thesis does not aim to build a new grading 
+system but to test how reliable LLM-generated results are when compared 
+with teacher evaluations. The review focuses on three areas: 
+(1) applications of LLMs in educational assessment, (2) their reasoning 
+and text-understanding abilities, and (3) approaches for validating AI 
+results against human judgments. The chapter closes with Bloom’s 
+taxonomy as a framework for aligning both AI and teacher assessments.
+
+\section{The Integration of LLMs in Educational Assessment}
+
+With the rapid development of LLMs, researchers have begun to 
+explore their role in automating feedback and assessment, 
+especially for open-ended and subjective tasks. 
+\cite{Holmes2022} argue that LLMs can enhance large-scale 
+education by providing consistent, immediate feedback while 
+simultaneously raising concerns regarding cultural bias and 
+fairness in underrepresented languages. This issue is 
+particularly relevant for Thai, where available training data 
+is limited compared to high-resource languages such as English 
+or Chinese.
+
+\cite{Lan2024} discusses the dual role of LLMs in education: 
+on one hand, they support personalized learning, offering 
+tailored feedback and explanations to students; on the other 
+hand, they may encourage academic dishonesty by enabling 
+students to outsource thinking tasks to AI. Similarly, 
+\cite{Ryznar2023} warns of potential misuse in assessment contexts, 
+recommending redesigns of exam formats and the use of 
+time-limited conditions to prevent LLM-driven plagiarism or 
+unfair advantages.
+
+These studies collectively highlight both the promise and 
+pitfalls of adopting LLMs in educational systems. While they 
+show potential to alleviate teacher workload and improve 
+grading efficiency, they also underscore the importance of 
+trustworthy, transparent, and context-sensitive systems.
+
+\bfigl{.8}{opportunities_and_challenges_of_llm}{Opportunities and Challenges of LLMs in Educational Assessment. Source: \cite{Vajjala2025}}
+
+\section{Leveraging LLMs for Text Understanding and Cognitive Inference}
+
+While LLMs are often praised for their text generation capabilities, 
+their performance in logical reasoning and semantic inference is less 
+consistent. \cite{Jang2023} demonstrated that GPT-4 performs well in 
+syntactic and linguistic tasks, but struggles with negation, 
+contradiction, and inference-based reasoning. This suggests that while 
+LLMs capture surface-level patterns, deeper cognitive alignment may 
+require additional strategies.
+
+\cite{Lin2024} explored model fine-tuning, showing that applying 
+lightweight methods such as LoRA to models like LLaMA-3 allows 
+specialization in tasks such as sentiment intensity regression. 
+Although fine-tuning is outside the scope of this thesis, their 
+findings emphasize the need to align models with specific cognitive 
+tasks rather than expecting universal performance from a single model.
+
+In this study, Bloom’s taxonomy is adopted as a classification lens: 
+mapping student responses to different cognitive levels and selecting 
+the most appropriate evaluation strategy (rule-based or LLM-based). 
+This avoids the pitfalls of a one-size-fits-all method and ensures 
+better alignment between assessment goals and AI capabilities.
+
+\section{LLM Ensembles and Model Selection Strategies}
+
+Since no single LLM excels universally across all tasks, ensemble 
+strategies have gained attention as a way to mitigate weaknesses. 
+\cite{Sakai2025} introduced QUAD-LLM-MLTC, an ensemble framework 
+for healthcare multi-label classification, which showed significant 
+improvements in semantic accuracy compared to single-model baselines. 
+Similarly, \cite{Tekin2024} proposed LLM-TOPLA, which clusters model 
+outputs to enhance robustness and efficiency in processing.
+
+These works demonstrate that strategic model selection or combination 
+of models can enhance reliability in real-world applications. Inspired 
+by this, the current study adopts a hybrid strategy: selecting the 
+best-performing LLM for each Bloom’s taxonomy category while 
+integrating rule-based reasoning for tasks that lend themselves to 
+deterministic evaluation.
+
+\bfigl{.8}{comparison_single_vs_ensemble}{Comparison of Single-Model vs. Ensemble Approaches in LLM Applications}
+
+\section{Bloom’s Taxonomy in Educational AI and Cognitive Classification}
+
+Bloom’s taxonomy provides a structured theoretical foundation for 
+aligning assessment with cognitive skill levels. It divides learning 
+objectives into six hierarchical categories:
+
+\begin{enumerate}
+    \item \textbf{Remembering} – recalling factual knowledge.
+    \item \textbf{Understanding} – explaining ideas or concepts.
+    \item \textbf{Applying} – using knowledge in new contexts.
+    \item \textbf{Analyzing} – breaking down information into components.
+    \item \textbf{Evaluating} – making judgments or justifying decisions.
+    \item \textbf{Creating} – producing new or original work.
+\end{enumerate}
+
+This taxonomy has been widely adopted in educational AI research. 
+\cite{Abduljabbar2015} applied machine learning to classify 
+questions into Bloom’s levels, showing its utility for structuring 
+automated evaluation. \cite{Rodrigo2015} emphasized the importance 
+of inter-rater agreement and gold-standard datasets, both critical for 
+training reliable assessment systems.
+
+More recent studies explore hybrid approaches. \cite{Dodia2023} 
+combined rule-based methods with machine learning to grade short-answer 
+responses, while \cite{Hubbard2017} demonstrated that question formats 
+(e.g., multiple-true-false vs. free-response) influence the depth of 
+student reasoning captured.
+
+These findings support the argument that Bloom’s taxonomy is not only 
+a theoretical tool but also a practical framework for guiding 
+AI-supported assessment. By aligning AI evaluation methods with 
+cognitive levels, systems can achieve greater accuracy, transparency, 
+and interpretability.
+
+\captionsetup[table]{justification=raggedright,singlelinecheck=false}
+
+\begin{center}
+\begin{longtable}{|l|p{4cm}|p{7cm}|}
+\caption{Six Categories of the Cognitive Domain Based on the Revised Bloom’s Taxonomy (2001) With Illustrative Examples}
+\label{tab:revised-bloom} 
+\\
+\hline
+\textbf{Category} & \textbf{Sample Keywords} & \textbf{Sample Behaviours / Sample Questions} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Category} & \textbf{Sample Keywords} & \textbf{Sample Behaviours / Sample Questions} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+Remembering &
+Define, list, name, recall, recognize &
+Students are able to define the 6 levels of Revised Bloom’s Taxonomy. \\
+\cline{2-3}         % Draws a horizontal line only under columns 2 and 3
+ & \textbf{Knowledge:} & Recall basic facts and terms. \\
+\cline{2-3}         % Draws a horizontal line only under columns 2 and 3
+ & \textbf{Sample Questions:} & Define each level of Revised Bloom’s Taxonomy. \\
+\hline
+
+Understanding &
+Classify, describe, discuss, explain, summarize &
+Students can explain the purpose of the Revised Bloom’s Taxonomy. \\
+\cline{2-3}
+ & \textbf{Knowledge:} & Explain relationships among concepts. \\
+\cline{2-3}
+ & \textbf{Sample Questions:} & Explain the purpose and importance of each level. \\
+\hline
+
+Applying &
+Demonstrate, implement, solve, use, execute &
+Students write an instructional objective for a method in the program. \\
+\cline{2-3}
+ & \textbf{Knowledge:} & Apply knowledge to new situations. \\
+\cline{2-3}     
+ & \textbf{Sample Questions:} & Demonstrate the structure of each level in a program. \\
+\hline
+
+Analyzing &
+Analyze, compare, contrast, differentiate, examine &
+Students compare and contrast cognitive and affective domains. \\
+\cline{2-3}
+ & \textbf{Knowledge:} & Break concepts into parts and examine relationships. \\
+\cline{2-3}
+ & \textbf{Sample Questions:} & List advantages/disadvantages of using \texttt{ArrayList} vs array. \\
+\hline
+
+Evaluating &
+Assess, critique, defend, judge, validate &
+Students judge the effectiveness of Revised Bloom’s Taxonomy. \\
+\cline{2-3}
+ & \textbf{Knowledge:} & Make judgments based on criteria and standards. \\
+\cline{2-3}
+ & \textbf{Sample Questions:} & Justify the concept of inheritance and give code examples. \\
+\hline
+
+Creating &
+Assemble, construct, design, formulate, invent &
+Students design a classification method for educational objectives. \\
+\cline{2-3}
+ & \textbf{Knowledge:} & Combine elements to form a coherent whole or original product. \\
+\cline{2-3}
+ & \textbf{Sample Questions:} & Create a new method integrating cognitive, affective, and psychomotor domains. \\
+\hline
+
+\end{longtable}
+\end{center}
+
+\section{Summary of Literature Review}
+
+The reviewed literature highlights three key insights relevant to 
+this thesis:
+
+\begin{itemize}
+    \item \textbf{LLMs in Education}: They hold significant potential for automating grading and feedback, but face challenges of fairness, cultural bias, and academic integrity.
+    \item \textbf{Text Understanding and Reasoning}: LLMs demonstrate strengths in syntax and semantics but remain inconsistent in logical reasoning, supporting the need for hybrid frameworks.
+    \item \textbf{Ensemble and Cognitive Alignment}: Combining multiple LLMs or matching models to cognitive levels, guided by Bloom’s taxonomy, enhances reliability and interpretability.
+\end{itemize}
+
+Building upon these insights, this thesis proposes a hybrid AI-assisted 
+grading framework tailored to Thai written exams. The framework 
+integrates LLMs with rule-based reasoning, structured under Bloom’s 
+taxonomy, to ensure fair, consistent, and pedagogically aligned 
+evaluation.
