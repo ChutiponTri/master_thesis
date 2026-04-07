@@ -1,320 +1,113 @@
 % \chapter{Conclusion and Future work}
 \chapter{CONCLUSION AND FUTURE WORK}
 
-\section{a}
-
-\subsection{Subsection 1}
-
-Sirindhorn International Institute of Technology (SIIT) offers three master of
-engineering programs, namely, Master of Engineering Program in Engineering
-Technology, Master of Engineering Program in Information and Communication
-Technology for Embedded Systems, and Master of Engineering Program in Logistics
-and Supply Chain Systems Engineering
-\citep{Bocchini2013, Smith2005}.
-
-\subsubsection{Sub-Subsection 1}
-\cite{Prokop2005} demonstrated
-Sirindhorn International Institute of Technology (SIIT) offers three master of
-engineering programs, namely, Master of Engineering Program in Engineering
-Technology, Master of Engineering Program in Information and Communication 
-Technology for Embedded Systems, and Master of Engineering Program in Logistics 
-and Supply Chain Systems Engineering.
-
-\subsubsection{Sub-Subsection 2}
-\cite{Montanari2003} found Sirindhorn International Institute of Technology
-(SIIT) offers three master of engineering programs, namely, Master of Engineering
-Program in Engineering Technology, Master of Engineering Program in Information
-and Communication Technology for Embedded Systems, and Master of Engineering
-Program in Logistics and Supply Chain Systems Engineering.
-
-Sirindhorn International Institute of Technology (SIIT) offers three master of
-engineering programs, namely, Master of Engineering Program in Engineering
-Technology, Master of Engineering Program in Information and Communication
-Technology for Embedded Systems, and Master of Engineering Program in Logistics
-and Supply Chain Systems Engineering.
-
-\section{Latex Editor: Overleaf and TexMaker}
-You can do latex online via Overleaf or locally via programs such as Texmaker. Overleaf has a nice instruction for many things about Latex such as learning Latex in 30 minutes. See \url{https://www.overleaf.com/learn}.
-
-\section{Citation}
-\subsection{Image and figure}
-This institute has two logo as shown in \rfig{fig:1}. The SIIT and TU logos are shown in %\rfig{fig:1}(\subref{fig:1a}) 
-\rfig{fig:1a} and \rfig{fig:1b}, respectively.
-
-\begin{figure}[h]       % "here" - try to place exactly here  || capital H forces figure to stay exactly here
-    \centering
-  \begin{subfigure}{.3\textwidth}
-  \centering
-  % include first image
-  \includegraphics[width=\linewidth]{Picture/SIIT.png}  
-  \caption{SIIT Logo}
-  \label{fig:1a}
-\end{subfigure}   \hfill
-\begin{subfigure}{.3\textwidth}
-  \centering
-  % include second image
-  \includegraphics[width=\linewidth]{Picture/thammasat.png}  
-  \caption{TU Logo}
-  \label{fig:1b}
-  \end{subfigure}
-    \caption{Our institute logos}
-    \label{fig:1}
-\end{figure}
-
-\subsection{Reference}\label{ss:ref}
-If you cite the related work within the sentence, the citation can be done by \cite{Bocchini2013}. On the other hand, this technique \citep{Bocchini2013}
-%\citep{bocchini2013comparative} 
-is used when citation is outside the sentence.
-
-Here are more examples: \cite{Smith2005} and list of citations, \cite{Prokop2005, Garlotta2001, Chen2014}.
-
-To organize our reference, 
-%In this thesis template, we are using these two sentences 
-%\begin{verbatim}
-%\bibliographystyle{apalike}
-%\bibliography{thesis_ref_new} 
-%\end{verbatim}
-%to set the bibliography style to "apalike" (\url{https://www.bibtex.com/s/bibliography-style-base-apalike/}).
-%In this template, 
-we put the reference items in the file thesis\_ref\_new.bib.
-You may edit the bib file in many ways, Using a bibliography program like "jabref" (\url{https://www.jabref.org/}) is convenient. It works for all operating systems. There are other more recent bibliography softwares like Mendeley, EndNote, Zotero. 
-
-Jabref can import citation in many formats. 
-
-Here is example of reference within the document. The literature review is in Chapter~\ref{ch:lit review}.
-
-\subsection{Biblatex and Biber}
-For the citation and reference, we follow the APA style (\url{https://libguides.murdoch.edu.au/APA/text}). We use Biblatex and Biber instead of Bibtex.
-We need to configure our Latex editor, TexMaker, to use biber instead of bibtex. To do this we need to go "Options", then "Configure Texmaker" and change in the field Bib(la)tex from "bibtex \%.aux" to "biber \%.bcf" as shown in \rfig{texmaker_config_biber}. For more info, see \url{https://tex.stackexchange.com/questions/154751/biblatex-with-biber-configuring-my-editor-to-avoid-undefined-citations}. The link also shows how to configure TeXstudio, which is another latex editor.
-
-\bfigl{.9}{texmaker_config_biber}{Texmaker Configuration to use Biblatex}  
-
-\subsection{URL Reference}
-Here is a clickable url link: \url{https://www.overleaf.com/learn/latex/Creating_a_document_in_LaTeX}. This is a beginner tutorial on using Latex. Overleaf is an onite latex editor. You don't need to install anything to use latex there.
-
-\section{Equations}
-
-You can write an equation in the sentence as $x^2 + 1$ or in a separate sentence like  
-\begin{equation}
-x = \sum_{n=0}^N z^n = \oint_{C} \vec{F} \cdot \vec{ds} = \frac{(\sqrt{x})^5}{\sin (x+\theta)}\label{eq:contour}
-\end{equation}
-We can refer to this equation as \reqn{eq:contour}.  Note that SIIT requires equations to be aligned to the left margin. This is done by passing the option \textit{fleqn} to the \textit{amsmath} package. However, the equations still not aligned perfectly to the left margin. Hope this is ok with SIIT.   
-
-As we can see from \reqn{eq:contour}, the equation can be rewritten as (now we use the \textbackslash beq and \textbackslash eeq macros): 
-%(defined in thesis\_macros.tex}:
-\beq 
-x = \pda{u}{t} = \del \cdot \ve = \begin{bmatrix}
-1 & 2 & 3\\
-x & b & c
-\end{bmatrix} \label{eq:contour2}
-\eeq 
-where I've used several macros defined in thesis\_macros.tex.
-
-\reqn{eq:contour} together with \reqn{eq:contour2} can be combined into... The case equation 
-\beq
-\alpha(n) = \begin{cases}
-			0, & \text{if $n$ odd}\\
-            a_1 + a_{12}^{\ln 2}, & \text{otherwise}
-		 \end{cases}
-\eeq
-
-We can write multi-line equation using "align" and \&
-\begin{align}
-2x - y &= 8\\ 
- 5x + 2y &= 18
-\end{align}
-
-We can remove the equation numbering in the first part of the equation with \textbackslash nonumber or equivalently the macro \textbackslash nn:
-\begin{align}
-x 	&= z + 3 \nn \\ 
- 	&= y - z
-\end{align}
-
-\section{Tables}
-
-An example of a simple table is shown in  \rtab{tab:simple}. Note by default the table usually appears at top of a page. 
-SIIT requires that the table must be center aligned, while the caption is left-aligned.
-
-\begin{table}[]
-\caption{Simple table}
-\begin{center}
-\begin{tabular}{|c|c|l|}
-    \hline 
-	Item & Value & Comment\\ \hline 
-    1 & 2 & left-aligned entry 555\\ \hline
-    2 & $x^2$ & oh! Equation in table!\\ \hline 
-\end{tabular}
-\end{center}
-\label{tab:simple}
-\end{table}
-
-A multicolumn table is shown in \rtab{tab:multicol}. A multi-column multi-row table is shown in \rtab{tab:multicol-multirow}, which is generated automatically from the website \url{https://www.tablesgenerator.com/}. We make it appear directly below by putting [h] for "here".
-
-\begin{table}[ht]
-\caption{Multi-column table}
-\begin{center}
-\begin{tabular}{|c|c|}
-    \hline
-    \multicolumn{2}{|c|}{Multi-column}\\ \hline
-    X&X\\
-    y & y \\ \hline
-\end{tabular}
-\end{center}
-\label{tab:multicol}
-\end{table}
-
-\begin{table}[]
-\caption{Multi-column, multi-row table}
-\begin{center}
-\begin{tabular}{|l|llll|}
-\hline
-\multirow{2}{*}{Item} & \multicolumn{4}{l|}{SIIT}                                                    \\ \cline{2-5} 
-                      & \multicolumn{2}{l|}{Rangsit}                    & \multicolumn{2}{l|}{BKD}   \\ \hline
-1                     & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4} & 5 \\ \hline
-6                     & \multicolumn{1}{l|}{7} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{}  &   \\ \hline
-\end{tabular}
-\end{center}
-\label{tab:multicol-multirow}
-\end{table}
-
-
-\section{Figures}
-\rfig{fig:siit2} shows a simple figure. 
-
-\begin{figure}[] 
-\centering
-\includegraphics[width=.2\textwidth]{SIIT.png} 	
-\caption{SIIT Logo}
-\label{fig:siit2}
-\end{figure}
-
-For convenience, a macro \textbackslash bfigl is defined. You can just pass the ratio of the image size relative to the paragraph width,  the file name, and the caption:
-\bfigl{.3}{thammasat}{TU Logo}
-The macro is defined in thesis\_macros.tex as 
-
-\begin{lstlisting}
-\newcommand{\bfigl}[3]{
-	\begin{figure}[H] 
-	\centering 
-	\includegraphics[width=#1\textwidth]{#2} 	
-	\caption{#3} 
-	\label{#2} 
-	\end{figure}
-}
-\end{lstlisting}
-
-Other than convenience, we can change the macro easily. For example, if I want the figure to be left aligned, I just remove \textbackslash centering in the macro definition.
-
-You can also put .png into the file name. I set the macro such that the label is also the filename. Hence, the figure is \rfig{thammasat}. 
-
-We can put multiple images into one figure as shown in \rfig{fig:1}.
-
-\section{Pseudocode and Code Listing}
-
-Pseuducode can be written using the \textit{algorithmicx} package \url{https://mirrors.mit.edu/CTAN/macros/latex/contrib/algorithmicx/algorithmicx.pdf},
-
-\begin{algorithm}
-\caption{Euclid’s algorithm}\label{euclid}
-\begin{algorithmic}[1]
-\Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
-\State $r\gets a\bmod b$
-\While{$r\not=0$}\Comment{We have the answer if r is 0}
-\State $a\gets b$
-\State $b\gets r$
-\State $r\gets a\bmod b$
-\EndWhile\label{euclidendwhile}
-\State \textbf{return} $b$\Comment{The gcd is b}
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-We can include codes like Python or C using \textit{lstlisting} package: see \url{https://www.overleaf.com/learn/latex/Code_listing}. It shows even how to import codes from a file. This means we can just modify the codes by modifying at the source file and recompile Latex file. 
-
-%\section{Drawing}
-%
-%Package: \textit{tikz}, \url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_1)%E2%80%94Basic_Drawing}
-%
-%\begin{tikzpicture}
-%\draw (0,0) rectangle (4,4);
-%\draw (2,2) circle (2.88cm);
-%\end{tikzpicture}
-%
-%Draw circuit with \textit{circuitikz} package, \url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_4)%E2%80%94Circuit_Diagrams_Using_Circuitikz}:
-%
-%\begin{circuitikz} \draw
-%(0,0) to[battery] (0,4)
-%  to[ammeter, i_=2<\milli\ampere>] (4,4) 
-%  to[C=3<\farad>] (4,0) -- (3.5,0)
-%  to[lamp, *-*] (0.5,0) -- (0,0)
-%(0.5,0) -- (0.5,-2)
-%  to[voltmeter, l=3<\kilo\volt>] (3.5,-2) -- (3.5,0)
-%;
-%\end{circuitikz}
-%
-%Draw flowcharts with tikz, \url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Creating_Flowcharts}.
-
-\section{Presentation}
-We can also create nice presentation slides with LaTex. This is convenient since we already have our formulas in Latex. Examples of document classes are Beamer and Powerdot.  See Overleaf tutorial for more into and online examples. 
-
-%Also see a Beamer presentation example at \url{http://dx.doi.org/10.13140/RG.2.2.27010.76481}.
-
-We can also embed Latex equations into Microsoft Powerpoint too. One way to do that is via \textit{iguana}: \url{https://www.jonathanleroux.org/software/iguanatex/}.
-
-
-
-\section{Misc}
-
-You can put a box around a text, like creating a note:
-\bnote{This is the first note. The number runs automatically}
-
-We can also hilighted words in \textbf{\color{red} words} or \hili{words} using \textbackslash hili macro. 
-
-Here is another note:
-\bnote{This is the second note with equation \beq x^2 + 1 \eeq}
-
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\section{Review 1}
-
-\rfig{dc_source_analab} shows analog voltage source \citep{Riaz2022}. The relation of voltage and current is shown in \reqn{eq:eq10}. The Thammasart Logo is shown in \rfig{thammasat}.
-
-\bfigl{.8}{dc_source_analab}{An analog voltage source.}
-
-\beq
-V = IR \label{eq:eq10} 
-\eeq
-
-\bnote{This is the third note.}
-
-Now we see that all the auto numberings work nicely. They start with the chapter number 2. 
-
-\section{Last Notes}
-
-\ben
- 
-\item Macros are wonderful: they can save you time typing. For example, if you happen to type electromagnetics a lot, it's wise to define a macro:
-\begin{verbatim}
-\newcommand{\em}{Electromagnetics}
-\end{verbatim} 
-The macros in thesis\_macros.tex may give you some ideas.
-
-\item When you write your thesis, you should regularly backup your files either to an external drive (USB, exteral HD) or cloud drive. You can also use online backup like svn or git.
-
-\item The chapters are in separate files, as you can see from the thesis\_siit\_tempate\_250213.tex file:
-\begin{lstlisting}
-\include{chapter_01}
-\include{chapter_02}
-\include{chapter_03}
-\include{chapter_04}
-\include{chapter_05}
-\end{lstlisting}
-
-If you have large files, it is a good idea to only include the chapter you are working on by comment out the include of other files.
-
-% \item The file \texttt{thesis_siit_tempate_250213.tex} is the main document where all packages are included and macros are defined. In Texmaker, you should open this file and go to Options then "Define Current Document as 'Master Document'". If you use Overleaf, follow the instruction in \url{https://www.overleaf.com/learn/how-to/Set_Main_Document}.
-\item The file \verb|thesis_siit_tempate_250213.tex| is the main document where all packages are included and macros are defined. In Texmaker, you should open this file and go to Options then "Define Current Document as 'Master Document'". If you use Overleaf, follow the instruction in \url{https://www.overleaf.com/learn/how-to/Set_Main_Document}.
-\item Don't overwork. Exercise and rest sufficiently. Have fun writing.
-
-\een
+\section{Conclusion}
+
+This study investigated the application of Large Language 
+Models (LLMs) for grading Thai-language written exam 
+responses, focusing on rubric-guided evaluation within the 
+framework of Bloom’s Taxonomy. The proposed approach aimed to 
+assess the capability of LLMs to provide reliable, 
+interpretable, and pedagogically aligned scoring in a 
+low-resource linguistic environment.
+
+Despite operating with a modest dataset—comprising 1,620 
+graded responses across both rubric and non-rubric conditions 
+and a final evaluation on a 55-question test set—the 
+experimental outcomes demonstrated promising performance. In 
+the rubric-based condition, inter-rater agreement between the 
+two expert teachers reached 92.73\%, indicating strong 
+consistency when rubric guidance was applied. In contrast, 
+non-rubric versus rubric grading by the same teacher yielded 
+lower agreement rates (54.55\% for Teacher~1 and 61.82\% for 
+Teacher~2), confirming the rubric’s critical role in enhancing 
+grading uniformity.
+
+When compared with human grading, the proposed AI-assisted 
+system achieved an overall Score Agreement Rate (SAR) of 82.4\% 
+and a Cohen’s Kappa ($\kappa$) of 0.78, reflecting 
+\textit{substantial agreement} with human raters. Qualitative 
+analysis further revealed that 87\% of the AI-generated 
+explanations were rated as high quality, demonstrating that 
+the LLM not only aligned numerically with human assessments 
+but also provided coherent and rubric-consistent reasoning for 
+its scoring decisions.
+
+Nevertheless, discrepancies persisted, particularly in 
+higher-order cognitive tasks—such as those categorized under 
+\textit{Analyzing} and \textit{Creating}—where abstract 
+reasoning and creative synthesis posed challenges for both AI 
+and human raters. A key source of scoring inconsistency 
+stemmed from the rubric’s keyword-based logic. Although the 
+rubric was designed to recognize Thai synonyms, the 
+morphological richness of the Thai language led to occasional 
+mismatches where multiple words conveyed equivalent meanings 
+but were not explicitly listed in the rubric. This highlights 
+a linguistic constraint that future Thai-language grading 
+systems must address through semantic-aware processing or 
+embedding-based similarity detection.
+
+The scarcity of Thai written exam data also underscores a 
+systemic issue in Thailand’s educational assessment 
+landscape—namely, the dominance of multiple-choice testing due 
+to the high labor demand of manual grading. This limitation 
+has restricted the scale of AI training and evaluation in 
+open-ended contexts. In contrast to previous studies conducted 
+in high-resource languages such as English or Chinese, this 
+research contributes a novel perspective by examining 
+rubric-based, LLM-assisted grading in a morphologically 
+complex and low-resource language environment. The integration 
+of rubric-guided prompting with rule-based algorithmic logic 
+resulted in improved consistency, particularly in lower-order 
+Bloom’s levels such as \textit{Remembering} and 
+\textit{Understanding}.
+
+Bloom’s level proved to be a significant determinant of system 
+performance: the AI achieved the highest agreement in recall 
+and comprehension-oriented questions, while complex or 
+creative responses continued to exhibit variability. Despite 
+these challenges, the findings affirm the feasibility of 
+deploying AI-assisted grading systems to support Thai 
+educators, reduce subjective bias, and enhance the fairness 
+and scalability of written assessment.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Future Work}
+
+Future research will focus on validating the consistency and
+accuracy of Bloom’s taxonomy classification using AI-based
+methods. In the present study, Bloom levels for all exam
+questions were assigned by expert teachers, and these labels
+served as the foundation for rubric construction and
+evaluation. However, teacher-generated classifications may
+contain unintentional human error or subjective variability.
+
+To address this limitation, the next phase of investigation
+will examine whether Large Language Models can independently
+assign Bloom’s taxonomy levels to Thai written exam questions,
+and how closely these AI-derived classifications align with
+teacher labels. By comparing teacher–AI agreement patterns,
+the system can help identify potential misclassifications,
+borderline items, or inconsistencies in cognitive-level
+designation.
+
+Additionally, future work will analyze the stability of AI
+Bloom-level classification across multiple LLMs to determine
+whether certain cognitive levels are more ambiguous or prone to
+disagreement. Such analysis will provide insight into which
+question types may require clearer wording, more explicit
+learning objectives, or rubric refinement.
+
+Finally, AI-assisted Bloom validation may offer a practical
+support tool for teachers during assessment design. By
+flagging items with low teacher–AI alignment, the system can
+help educators verify the appropriateness of question
+difficulty and ensure stronger alignment between intended
+learning outcomes and actual exam content.
+
+Overall, the next stage of this research will shift toward
+using AI not only for grading but also as a mechanism to
+evaluate and reinforce the reliability of Bloom’s taxonomy
+classification itself, improving transparency and reducing
+potential human error in exam development.

@@ -1,12 +1,22 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Six Categories of the Cognitive Domain Based on the Revised Bloom’s Taxonomy (2001) With Illustrative Examples}}{9}{table.2.1}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Six Categories of the Cognitive Domain Based on the Revised Bloom’s Taxonomy (2001) With Illustrative Examples}}{21}{table.2.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Weighted Performance Score (WPS) calculation and architectural diversity of candidate LLMs.}}{38}{table.4.1}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Performance by Model (Non-Rubric Set, 340 Responses Validated)}}{39}{table.4.2}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces LLM Performance on Rubric-Based Student Answer Evaluation}}{40}{table.4.3}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Consolidated Comparison of Non-Rubric and Rubric Performance Against Human Grading}}{40}{table.4.4}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces LLM Performance Across Bloom’s Taxonomy Categories}}{41}{table.4.5}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Score Change Patterns from Non-Rubric to Rubric Grading}}{43}{table.4.6}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Comparison of LLM Scores with Human Scores on the Test Set (55 Questions)}}{45}{table.4.7}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Simple table}}{19}{table.caption.16}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Multi-column table}}{19}{table.caption.17}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Multi-column, multi-row table}}{19}{table.caption.18}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {A.1}{\ignorespaces Example Rubric for \textit {Understanding}-Level Question}}{55}{table.A.1}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Extended Model Selection Results with Normalized Scores and WPS}}{58}{table.B.1}%
+\contentsline {table}{\numberline {B.2}{\ignorespaces Summary of Human Grading Results across Conditions}}{59}{table.B.2}%
+\contentsline {table}{\numberline {B.3}{\ignorespaces Detailed AI–Human Score Agreement by Bloom’s Category}}{59}{table.B.3}%
+\contentsline {table}{\numberline {B.4}{\ignorespaces Examples of AI Scoring Explanation Quality}}{60}{table.B.4}%
+\contentsline {table}{\numberline {B.5}{\ignorespaces Error Type Distribution and Illustrative Examples}}{60}{table.B.5}%
 \contentsfinish 

@@ -68,45 +68,69 @@ graded exam types.
 \section{Limitations of Current Assessment Practices}
 
 Although multiple-choice exams are efficient, they fail to capture the 
-richness of student reasoning, creativity, and expressive ability 
-\citep{scouller1998influence, birenbaum1997alternative}. 
-Written exams, despite their resource-intensive nature, remain the most 
-effective tool for evaluating comprehensive understanding and critical 
-thinking \citep{gipps2011beyond, gierl2017automated}. 
-This creates a tension between educational goals and practical 
-constraints.
+depth of student reasoning, creativity, and expressive ability. 
+Recent studies highlight that selected-response formats tend 
+to assess surface-level understanding, whereas open-ended 
+responses are better at revealing students’ conceptual 
+thinking and misconceptions \citep{dossey2024automated, policar2025automated}
+Written examinations, despite their higher grading workload, remain 
+one of the most effective means of evaluating comprehensive 
+understanding and critical thinking, especially when compared 
+with highly constrained test formats 
+\citep{emirtekin2025systematic, fuller2024rubric}.
 
-In recent years, efforts to explore the potential of LLMs in grading have included rubrics, 
-peer evaluation, and partial automation through keyword-based scoring 
-systems \citep{lu2021automatic, ridley2022automated}. 
-However, these approaches often fall short due to the complexities 
-of natural language and the diversity of student expression. Rule-based 
-systems, for instance, can detect certain patterns but struggle with 
-semantic nuances, paraphrasing, and context-dependent meaning 
-\citep{dikli2006automated, shermis2014state}.
+In recent years, efforts to explore automated grading with 
+advanced AI systems particularly large language models 
+(LLMs) have expanded rapidly. These include rubric-guided 
+prompting, structured evaluation protocols, and hybrid 
+workflows that combine peer evaluation or partial automation 
+for efficiency 
+\citep{xie2024gradelikehuman, tang2025autograding}. 
+However, these approaches still face limitations arising from 
+the complexities of natural language and the diversity of 
+student expression. For example, while rule-based or 
+keyword-oriented methods can detect explicit patterns, they 
+struggle with semantic nuance, paraphrasing, indirect 
+reasoning, and context-dependent meaning. Even LLM-based 
+approaches may exhibit inconsistent scoring behavior or rely 
+on shallow reasoning shortcuts, deviating from human graders’ 
+expectations 
+\citep{wu2024unveilingscoring, emirtekin2025systematic}.
 
 \section{Role of Bloom’s Taxonomy in Assessment}
 
-Bloom’s Taxonomy provides a structured framework for categorizing cognitive skills, 
-ranging from basic recall of facts to higher-order reasoning and critical thinking 
-\citep{bloom1956taxonomy,anderson2001taxonomy}. 
-In the context of this research, Bloom’s Taxonomy serves two important purposes. 
+Bloom’s Taxonomy provides a structured framework for 
+categorizing cognitive skills, ranging from basic recall to 
+higher-order reasoning and critical thinking. Despite its 
+origins in mid‑20th‑century educational theory, the taxonomy 
+remains highly relevant in modern assessment and AI‑enhanced 
+learning research \citep{stanny2016reexamining, huber2025llms}. 
+In the context of this study, Bloom’s Taxonomy plays two 
+central roles.
 
-First, it provides a pedagogical lens for understanding the type of cognitive 
-process each exam question is designed to assess. This ensures that grading 
-criteria align with intended learning outcomes \citep{krathwohl2002revision}. 
+First, it serves as a pedagogical foundation for interpreting 
+the cognitive processes targeted by each exam question. This 
+alignment ensures that grading criteria and model behavior 
+correspond to intended learning outcomes—a principle 
+emphasized in modern AI‑pedagogical models 
+\citep{hmoud2024aied, lee2024flipped}.
 
-Second, Bloom’s levels are used as a pre-screening mechanism for the 
-AI-assisted framework. Each exam question is labelled with a Bloom’s 
-category by expert teachers, and this label is then used to guide 
-model selection. In practice, different types of questions 
-(e.g., recall vs. analysis) may be better handled by different LLMs or 
-combinations of LLM and rule-based reasoning \citep{zohar2004higher,stanny2016reexamining}. 
+Second, Bloom’s levels are used as a pre‑screening mechanism 
+within the AI‑assisted grading framework. Expert teachers 
+label each exam item according to Bloom’s categories, and 
+these labels guide the selection of models and reasoning 
+strategies. Recent work has shown that different Bloom levels 
+may benefit from different AI strategies: for instance, tasks 
+at lower cognitive levels might be handled reliably with 
+general-purpose LLM prompts, while more complex analytical or 
+creative tasks may require specialized prompting or hybrid 
+AI–rule‑based reasoning 
+\citep{scaria2024automated, luo2025enhanced}.
 
-By integrating Bloom’s Taxonomy into the framework, the system 
-acknowledges both pedagogical validity and technical feasibility, 
-linking educational theory with AI-based proof-of-concept evaluation.
-
+By integrating Bloom’s Taxonomy into the system, our approach 
+achieves both pedagogical validity and technical structure, 
+bridging established educational theory with AI-driven 
+assessment strategies.
 
 \section{Advances in Natural Language Processing (NLP)}
 
@@ -129,45 +153,90 @@ structured rules.
 
 \section{Research Motivation and Contribution}
 
-The motivation behind this research is twofold:
-\begin{enumerate}
-    \item To reduce the grading burden on Thai teachers while improving fairness and consistency in written exam evaluation.
-    \item To promote the wider adoption of open-ended questions in Thai education, thereby encouraging the development of critical reasoning, creativity, and expressive skills in students.
-\end{enumerate}
+% The motivation behind this research is twofold:
+% \begin{enumerate}
+%     \item To reduce the grading burden on Thai teachers while improving fairness and consistency in written exam evaluation.
+%     \item To promote the wider adoption of open-ended questions in Thai education, thereby encouraging the development of critical reasoning, creativity, and expressive skills in students.
+% \end{enumerate}
 
-This thesis aims to develop an AI-assisted grading framework for 
-Thai-language written exam questions. By leveraging LLMs in combination 
-with rule-based reasoning, the framework is designed to enhance accuracy, 
-consistency, and efficiency in grading, while maintaining interpretability 
-for educators.
+% This thesis aims to develop an AI-assisted grading framework for 
+% Thai-language written exam questions. By leveraging LLMs in combination 
+% with rule-based reasoning, the framework is designed to enhance accuracy, 
+% consistency, and efficiency in grading, while maintaining interpretability 
+% for educators.
 
-The expected contributions of this research are as follows:
-\begin{itemize}
-    \item A comprehensive analysis of challenges in grading Thai written responses.
-    \item A proof-of-concept framework combining LLMs and rule-based reasoning.
-    \item Empirical evaluation of the framework’s performance compared to human graders.
-    \item Insights into the broader implications for educational assessment and curriculum design.
-\end{itemize}
+% The expected contributions of this research are as follows:
+% \begin{itemize}
+%     \item A comprehensive analysis of challenges in grading Thai written responses.
+%     \item A proof-of-concept framework combining LLMs and rule-based reasoning.
+%     \item Empirical evaluation of the framework’s performance compared to human graders.
+%     \item Insights into the broader implications for educational assessment and curriculum design.
+% \end{itemize}
+
+The motivation behind this research is twofold. First, it 
+seeks to reduce the grading burden on Thai teachers while 
+enhancing fairness and consistency in evaluating written exam 
+responses. Manual grading of open-ended answers often demands 
+considerable time and effort, and is prone to subjectivity 
+and variation across raters. By introducing an AI-assisted 
+approach, the research aims to support teachers in achieving 
+more objective, transparent, and efficient assessment 
+practices. Second, it strives to promote the wider adoption 
+of open-ended questions in Thai education, as these question 
+types encourage students to demonstrate higher-order thinking 
+skills such as critical reasoning, creativity, and written 
+expression—competencies that are essential for lifelong 
+learning but often underemphasized in traditional exam 
+formats.
+
+This thesis focuses on the development of an AI-assisted 
+grading framework for Thai-language written exam questions. 
+The framework integrates large language models (LLMs) with 
+rule-based reasoning to combine the interpretive flexibility 
+of AI with the explicit structure of human-designed rubrics. 
+Through this hybrid approach, the system aims to improve 
+grading accuracy, consistency, and efficiency while ensuring 
+that its reasoning remains interpretable and reviewable by 
+educators. The framework is designed not to replace teachers 
+but to serve as an intelligent support tool that complements 
+human judgment in the grading process.
+
+The contributions of this research are multifaceted. It 
+provides a comprehensive analysis of the challenges inherent 
+in grading Thai written responses, identifying linguistic and 
+pedagogical factors that affect evaluation consistency. It 
+also presents a proof-of-concept framework that integrates 
+LLMs and rule-based reasoning, offering a practical model for 
+AI-assisted assessment in the Thai educational context. 
+Furthermore, the study includes an empirical evaluation 
+comparing the framework’s performance with that of human 
+graders in terms of fairness, consistency, and 
+interpretability. Finally, the findings of this research 
+offer valuable insights into how AI-driven assessment tools 
+can influence future educational assessment design, encourage 
+the use of open-ended evaluations, and support curriculum 
+development aimed at fostering analytical and expressive 
+skills in students.
 
 \section{Research Objectives}
 
 The objectives of this research are as follows:
 \begin{enumerate}
-    \item To investigate the challenges and limitations in grading Thai written exam responses.
-    \item To design a proof-of-concept AI-assisted grading framework that integrates LLMs with rule-based reasoning.
-    \item To evaluate the framework’s effectiveness against human grading in terms of fairness, consistency, and interpretability.
-    \item To provide insights into how such frameworks may support, rather than replace, teachers in Thai educational contexts.
+    \item To explore the challenges and limitations in grading Thai written exam responses. This objective aims to investigate the underlying issues that make Thai-language written assessment difficult to evaluate consistently and fairly. It examines factors such as linguistic ambiguity, variations in student writing style, and the interpretive nature of open-ended questions. By understanding these challenges, the study seeks to identify the gaps where automation or AI assistance could meaningfully support human grading.
+    \item To build a proof-of-concept AI-assisted grading framework that integrates large language models (LLMs) with rule-based reasoning. The goal is to design and implement a hybrid framework that combines the contextual understanding of LLMs with explicit rule-based logic to improve reliability and transparency in the grading process. This framework serves as an experimental prototype demonstrating how AI can analyze, interpret, and score Thai written responses in a structured and explainable manner.
+    \item To compare the performance of the proposed framework with human grading in terms of fairness, consistency, and interpretability. This objective focuses on evaluating how closely the framework’s scoring aligns with human teachers’ judgments. The comparison emphasizes fairness—ensuring that the system treats responses objectively across scoring levels; consistency—maintaining stable grading patterns across different responses; and interpretability—providing clear reasoning that can be reviewed and understood by educators.
+    \item To demonstrate how AI can support, rather than replace, teachers in Thai educational contexts. This research highlights the collaborative potential of AI tools in education. Rather than automating the entire grading process, the framework is envisioned as an assistive system that provides preliminary evaluations, insights, and rubric-based guidance to teachers. It aims to show how AI can reduce grading workload, enhance efficiency, and promote fairness while keeping teachers at the center of the decision-making process.
 \end{enumerate}
 
 \section{Scope of the Study}
 
 This study is limited to the following scope:
 \begin{enumerate}
-    \item Focuses on Thai-language written exam questions at the secondary school level.
-    \item Examines only short-answer and essay-type responses (0–3 scoring scale).
-    \item Uses a proof-of-concept approach with selected LLMs and teacher-designed rubrics.
-    \item Each exam question is pre-classified into Bloom’s Taxonomy levels by expert teachers, and these labels are used to guide model selection within the framework.
-    \item The framework is evaluated on fairness, consistency, and interpretability, but not on large-scale deployment or integration into actual school systems.
+    \item The research focuses on student-level written exams under the Royal Society of Thailand, which serve as standardized Thai-language assessments. These exam questions are representative of authentic written evaluations used to assess comprehension, reasoning, and expression in the Thai context.
+    \item The study covers short-answer and essay-type questions evaluated using a 0–3 scoring scale. This scale provides a manageable yet informative range for distinguishing different levels of understanding and correctness in written responses.
+    \item The proposed framework employs selected large language models (LLMs) in combination with teacher-designed rubrics. The LLMs are responsible for generating initial assessments and explanations, while the rubrics provide structured criteria that guide both human and AI evaluation to ensure fairness and alignment with educational standards.
+    \item All exam questions are pre-labeled according to Bloom’s Taxonomy by expert teachers. These cognitive level labels are used to guide model selection and analysis, allowing the study to explore how the framework performs across different levels of cognitive demand.
+    \item The research focuses on evaluating the framework’s performance and analytical outcomes—particularly fairness, consistency, and interpretability—rather than implementing or deploying it in a live classroom environment. The study thus provides an experimental foundation and conceptual validation for potential future applications in Thai education.
 \end{enumerate}
 
 \section{Structure of the Thesis}

@@ -1,14 +1,140 @@
 \chapter{Appendix \thechapter}\label{appendixA}
 %\chapter{Appendix A}\label{appendixA}
-\appendixchaptername{List of Highly-Weighted Terms}
+\appendixchaptername{Rubric Design and Prompt Templates}
       
-This is a draft of the official Latex template for SIIT Master or PhD Thesis. 
-It has been revised in April 2022 to try to follow the SIIT requirements given in the file "ThesisTemplate\_format\_25Nov19.pdf" found from \url{https://reg.siit.tu.ac.th/registrar/requestform/ThesisTemplate25Nov19.pdf} and also in \url{https://reg.siit.tu.ac.th/registrar/downloadform.asp?flag=1&avs2321316=1}. Another revision was made in February 2025 to change signatory names and correct minor formatting inconsistencies.
-In the latter address, you can find a LaTex template as well. This draft is the revision of that template. 
+\section{Rubric Development Process}
 
+The rubrics used in this study were designed to ensure 
+consistency and transparency in evaluating Thai written exam 
+responses across Bloom’s taxonomy levels. The development 
+followed a three-stage process:
 
-\section{Main Heading 1}
-Sirindhorn International Institute of Technology (SIIT) offers three master of
-engineering programs, namely, Master of Engineering Program in Engineering
-Technology, Master of Engineering Program in Information and Communication
-Technology for Embedded Systems, and Master of Engineering Program in Logistics and Supply Chain Systems Engineering \citep{Chen2014}.
+\begin{enumerate}
+    \item \textbf{Draft Generation:} Large Language Models (LLMs) such as ChatGPT were used to generate preliminary rubrics for each question based on Bloom’s cognitive level, target learning outcomes, and example student responses.
+    \item \textbf{Expert Refinement:} Two professional Thai teachers reviewed and refined the generated rubrics. Ambiguous wording was clarified, and scoring descriptors were aligned with Thai pedagogical standards and curriculum guidelines.
+    \item \textbf{Validation:} The finalized rubrics were tested on sample responses, and discrepancies between teacher and model evaluations were discussed and corrected before use in the main experiment.
+\end{enumerate}
+
+This iterative design ensured that rubrics provided both 
+structured guidance for LLM scoring and reliable reference 
+criteria for human teachers.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Example Rubric Table}
+
+Each rubric defines four score levels (0–3) with clear 
+performance descriptors and expected conceptual indicators. 
+\rtab{tab:example_rubric} illustrates a 
+representative rubric for the \textit{Understanding} level.
+
+{
+\centering
+\begin{longtable}{c p{7cm} p{6cm}}
+    \caption{Example Rubric for \textit{Understanding}-Level Question}
+    \label{tab:example_rubric}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Score} & \textbf{Description of Criteria} & \textbf{Example Keywords / Concepts} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Score} & \textbf{Description of Criteria} & \textbf{Example Keywords / Concepts} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    3 & Response demonstrates complete comprehension, accurate explanation of concepts, and appropriate use of terminology in context. & Fully explains key ideas, correctly connects concepts, accurate interpretation \\
+    2 & Response shows partial understanding; includes mostly correct ideas but lacks depth, clarity, or completeness. & Generally correct but missing details, partial explanation, limited linkage between concepts \\
+    1 & Response reveals limited understanding or contains misconceptions about the main idea. & Vague or unclear explanation, minor conceptual errors, incomplete reasoning \\
+    0 & Response is irrelevant, off-topic, or entirely incorrect. & Does not address the question, lacks essential content, incorrect reasoning \\
+    
+\end{longtable}
+}
+
+These rubrics were stored in Excel format for contextual 
+retrieval during AI evaluation, allowing the LLMs to 
+reference expected criteria dynamically when grading.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{LLM Grading Prompt Templates}
+
+Two main prompt templates were employed during the grading 
+process: one for \textit{rubric-based evaluation} and another 
+for \textit{non-rubric evaluation}. Both prompts were 
+carefully structured to ensure consistency and minimize 
+variance in language interpretation by the models.
+
+\subsection*{Rubric-Based Prompt Template}
+
+\begin{verbatim}
+You are an expert Thai teacher.
+Evaluate the following student's answer using the rubric below.
+Assign a score (0-3) and explain your reasoning clearly.
+
+[Question]: <question text>
+[Student Answer]: <student answer>
+[Rubric Criteria]:
+Score 3: <criteria>
+Score 2: <criteria>
+Score 1: <criteria>
+Score 0: <criteria>
+
+Your Output Format:
+Score: <number>
+Reasoning: <concise explanation>
+\end{verbatim}
+
+\subsection*{Non-Rubric Prompt Template}
+
+\begin{verbatim}
+You are an expert Thai teacher.
+Evaluate the student's written answer for correctness and completeness.
+Assign a score between 0 and 3 and explain your reasoning.
+
+[Question]: <question text>
+[Student Answer]: <student answer>
+
+Your Output Format:
+Score: <number>
+Reasoning: <concise explanation>
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Contextual Data Retrieval for Grading}
+
+During rubric-based grading, contextual data were retrieved 
+from the pre-validated Excel dataset. Each 
+question entry included:
+
+\begin{enumerate}
+    \item Representative answers for each score level (0-3)
+    \item Bloom’s taxonomy classification
+    \item Rubric text and expected keywords
+\end{enumerate}
+
+This information was appended to the LLM input to provide 
+contextual grounding and reduce ambiguity in interpretation.  
+An example of contextual insertion is shown below.
+
+\begin{verbatim}
+[Contextual Reference Answers]
+Score 3 Example: <full-mark answer>
+Score 2 Example: <partial answer>
+Score 1 Example: <minimal answer>
+Score 0 Example: <irrelevant or incorrect answer>
+\end{verbatim}
+
+The combination of structured rubrics and contextual data 
+helped standardize AI evaluation, reduce bias, and improve 
+alignment with teacher grading in both rubric and non-rubric 
+settings.

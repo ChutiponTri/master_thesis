@@ -1,46 +1,350 @@
 % \chapter{Night-time vehicle detection}
-\chapter{METHODOLOGY}
+\chapter{PROPOSED METHODOLOGY}
 \label{ch:chapter_3}
 
-This study evaluates the effectiveness of Large Language 
-Models (LLMs) in grading Thai-language written questions, 
-aligning results with Bloom’s Taxonomy and expert human 
-judgment. The process comprises five phases: question 
-classification, dataset preparation, system setup, comparative 
-evaluation, and data analysis.
+This study investigates the effectiveness and reliability of 
+Large Language Models (LLMs) in evaluating Thai-language 
+written exam responses, using Bloom’s taxonomy as a cognitive 
+framework and teacher assessments as the human baseline. The 
+methodology consists of six main phases: exam collection, 
+model selection, simulated response generation, AI evaluation, 
+human scoring, and comparative analysis.
 
-\section{Classifying Exam Questions based on Bloom’s Taxonomy}
+The process begins with collecting and labeling Thai exam 
+questions, followed by selecting representative LLMs with 
+diverse reasoning characteristics. Each selected model then 
+generates simulated student answers, which are validated by 
+expert teachers. Subsequently, the finalized test set is 
+evaluated by both AI models and human raters. The resulting 
+scores and explanations are compared across multiple variables 
+to assess consistency, fairness, and alignment with pedagogical 
+standards.
 
-All of our written questions were categorized into Bloom’s six 
-cognitive levels by two experienced Thai educators. Independent 
-classifications were reconciled through consensus, ensuring 
-pedagogical alignment for subsequent model evaluation.
+\section{Examination Data Collection and Preparation}
 
-\section{Dataset Collection and Preparation}
+The dataset used in this study was obtained from the Royal 
+Society of Thailand, provided through an internal academic 
+collaboration facilitated by the research advisor. The source 
+contained a comprehensive repository of examination materials 
+across multiple disciplines, stored in a raw SQL database 
+format. The dataset included both structured and unstructured 
+question types, some of which contained partial metadata and 
+preliminary cognitive labels.
 
-The exam questions are divided into two sets:
+From this database, a total of 746 examination questions were 
+extracted and subsequently filtered to retain only open-ended, 
+written-response items suitable for evaluating expressive 
+reasoning. Two professional Thai teachers independently 
+reviewed and re-labeled these questions based on Bloom’s 
+taxonomy, ensuring accuracy and inter-rater consistency in 
+cognitive classification.
 
-\begin{enumerate}
-    \item Rubric-Based Set: Rubrics were created per question using ChatGPT-extracted keywords (language accuracy, communication skills), verified by expert teachers.
-    \begin{figure}[H]
-        \centering
-        \fbox{\includegraphics[width=0.5\textwidth]{3.1_sample_prompt}}
-        \caption{Sample prompt used to extract key rubric keywords from Thai exam questions via ChatGPT (Please specify three main keywords from the following question to be used as criteria for evaluating and scoring the answer).}
-        \label{fig:3.1_sample_prompt}
-    \end{figure}
-    \item Non-Rubric Set: This set skips the rubric generation step to observe the LLMs’ raw interpretive grading ability without explicit criteria.
-\end{enumerate}
-
-Five LLMs (ChatGPT, Typhoon, Gemini, Grok, Claude) generated 
-10 sample student responses per question, each scored 0–3 with 
-explanations. Representative answers for each score level were 
-refined by professional teachers and stored in Excel for 
-contextual retrieval during grading. The prompt used was:
+Following this labeling process, the dataset was divided into 
+two identical subsets: a non-rubric set and a rubric-assisted 
+set, both containing the same questions and Bloom-level 
+assignments. For the rubric-assisted set, initial rubrics were 
+generated using ChatGPT to provide baseline criteria for 
+evaluation, the prompt used shown in \rfig{fig:3.1_sample_prompt}. 
 
 % \bfigl{.7}{3.2_prompt_gen_student_ans}{Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=0.6\textwidth]{3.1_sample_prompt}}
+    \caption{Sample prompt used to extract key rubric keywords from Thai exam questions via ChatGPT (Please specify three main keywords from the following question to be used as criteria for evaluating and scoring the answer).}
+    \label{fig:3.1_sample_prompt}
+\end{figure}
+
+These AI-generated rubrics were later refined and 
+validated by the two teachers to ensure pedagogical soundness 
+and to minimize human bias or inconsistency during grading.
+
 \begin{figure}[H]
   \centering
-  \fbox{\includegraphics[width=0.7\textwidth]{3.2_prompt_gen_student_ans}}
-  \caption{Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}
-  \label{fig:3.2_prompt_gen_student_ans}
+  \fbox{\includegraphics[width=0.8\textwidth]{3.2_data_collection}}
+  \caption{Methodology for Examination Dataset Preparation, including Teacher Re-labeling based on Bloom's Taxonomy and the Generation and Validation of Assessment Rubrics.}
+  \label{fig:3.2_data_collection}
 \end{figure}
+
+This finalized dataset serves as the foundation for subsequent 
+experimental phases, including model evaluation, rubric 
+integration, and comparative scoring analysis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Model Selection}
+\label{sec:model_selection}
+
+In alignment with insights from the literature review, the 
+study began with an initial pool of ten Large Language Models 
+(LLMs): ChatGPT, DeepSeek, Grok, Claude, Gemma, OpenThaiGPT, 
+Typhoon, Gemini, NemoTron, and Qwen. Each model was preliminarily 
+tested using a subset of Thai written exam questions to 
+evaluate its scoring behavior, reasoning transparency, and 
+linguistic accuracy.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.7\textwidth]{3.3_init_model}}
+  \caption{Visual representation of the initial set of ten Large Language Models (LLMs) evaluated for suitability in the automated assessment experiment.}
+  \label{fig:3.3_init_model}
+\end{figure}
+
+To ensure diversity and relevance, the evaluation focused on 
+how differently each model interpreted and scored open-ended 
+responses. Models showing overlapping scoring tendencies or 
+similar reasoning styles were excluded to avoid redundancy. 
+The remaining candidates were then validated by two professional 
+Thai teachers, who reviewed the models’ outputs and rated 
+their suitability based on accuracy, clarity of explanation, 
+and pedagogical consistency.
+
+\subsection{Model Ranking and Selection Criteria}
+
+The model selection followed a quantitative–qualitative hybrid 
+process consisting of two main components: (1) a weighted 
+performance metric that captures both scoring accuracy and 
+reasoning quality, and (2) a diversity criterion that ensures 
+architectural and operational variety among selected models.
+
+\subsubsection{Weighted Performance Score (WPS)}
+
+To identify the top-performing candidates, each model was 
+ranked based on its Weighted Performance Score (WPS), which 
+combines objective scoring performance and qualitative reasoning 
+evaluation. This approach prevents overreliance on accuracy 
+alone and incorporates interpretability and reliability—factors 
+critical in educational assessment.
+
+\begin{equation}
+  WPS_i = (w_{\text{Score}} \cdot S_i) + (w_{\text{Reasoning}} \cdot R_i)
+\end{equation}
+
+where:
+
+\begin{longtable}{l p{0.7\textwidth}}
+    \( i \) & Index of the model (e.g., \( i = \text{ChatGPT} \)). \\
+    \( S_i \) & Normalized LLM score representing quantitative performance on benchmark or pilot scoring tasks (scaled 0–1). \\
+    \( R_i \) & Normalized reasoning quality score reflecting transparency, explanation coherence, or human-rated interpretability (scaled 0–1). \\
+    \( w_{\text{Score}} \) and \( w_{\text{Reasoning}} \) & Weights assigned to performance and reasoning.  
+    In this study, reasoning was given slightly higher importance (\( w_{\text{Score}} = 0.4 \), \( w_{\text{Reasoning}} = 0.6 \)) due to its central role in explainable grading. \\
+\end{longtable}
+
+\subsubsection{Diversity Criterion}
+
+Beyond numerical ranking, the final model set was refined 
+to ensure conceptual and technical diversity. This step mitigates 
+the risk of homogeneous error patterns and enhances ensemble 
+robustness in downstream experiments. Models were grouped 
+and compared across four differentiating dimensions:
+
+\begin{enumerate}
+    \item \textbf{Commercial vs. Open-Source:}  
+    To balance accessibility and capability, both proprietary (e.g., ChatGPT, Claude, Gemini) and open-source models (e.g., OpenThaiGPT, Typhoon) were included.
+
+    \item \textbf{Developer Origin:}  
+    Each major AI developer or foundation—OpenAI, Anthropic, Google, xAI, DeepSeek—was represented to capture diverse architectural philosophies and training pipelines.
+
+    \item \textbf{Language Focus:}  
+    Models were selected to cover both global multilingual LLMs and Thai-specific or regionally tuned models to improve cross-linguistic reliability.
+
+    \item \textbf{Architectural Type:}  
+    A mix of dense transformer models and Mixture-of-Experts (MoE) architectures (e.g., Grok, Gemini) was maintained to explore performance variation across modeling paradigms.
+\end{enumerate}
+
+\subsection{Final Model Selection}
+
+Based on the combined WPS ranking and diversity validation, 
+five representative models were retained for the main experiment:  
+\textbf{ChatGPT, Claude, Gemini, Typhoon, and Grok}. Each was 
+chosen for its distinct reasoning characteristics, architectural 
+foundation, and demonstrated reliability in human-validated 
+assessment contexts.  
+This hybrid selection process ensures a balanced experimental 
+setup combining accuracy, interpretability, and model diversity to 
+support the study’s goal of building a fair and transparent 
+AI-assisted grading framework for Thai written exams.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Simulated Student Response Generation and Human Validation}
+
+In this phase, the five selected Large Language Models 
+(LLMs) from the previous stage were used to simulate student 
+responses. For each examination question, the models generated 
+ten variations of student answers, each scored on a scale from 
+0 to 3, accompanied by a rationale explaining the reasoning 
+behind the assigned score for both the rubric-assisted and 
+non-rubric sets.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\textwidth]{3.4_prompt_gen_student_ans}}
+  \caption{Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}
+  \label{fig:3.4_prompt_gen_student_ans}
+\end{figure}
+
+All AI-generated responses and associated scores were 
+subsequently reviewed by the two professional Thai teachers. 
+This human validation step ensured that the scoring rationale 
+and answer quality were pedagogically sound and aligned with 
+Bloom’s taxonomy levels.
+
+The evaluation also explored the relationship between model 
+performance and question characteristics. Specifically, the 
+analysis aimed to identify which LLMs performed best for each 
+cognitive level or question type. In cases where standard LLM 
+scoring was insufficient—for example, when handling 
+domain-specific language or intricate semantic 
+structures—custom Python algorithms were employed. These 
+algorithms, leveraging the \texttt{PyThaiNLP} framework, provided 
+tailored processing to accurately interpret and score complex 
+responses.
+
+This combined AI-human approach allowed for a nuanced 
+assessment of model reliability, reasoning transparency, and 
+the potential need for task-specific computational adjustments.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proposed AI-Assisted Grading System}
+\label{sec:prompt_template}
+
+In this phase, the grading process was implemented using the 
+previously selected LLMs. For each examination question, the 
+models were prompted with the question itself, relevant rubrics 
+for the rubric-assisted set, and representative sample responses 
+as shown in \rfig{fig:3.5_prompt_proposed}. For 
+the non-rubric set, the rubric input was omitted.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\textwidth]{3.5_prompt_proposed}}
+  \caption{Prompt template for grading a student’s response with context, rubric, and question
+    provided to the LLM – Grade the student’s answer for a single question, 
+    assigning a score from 0 to 3 out of 3. Present the output in plain text, including: (1) the
+    numerical score (0–3), and (2) a clear explanation of the scoring rationale without bullet points
+    or headings}
+  \label{fig:3.5_prompt_proposed}
+\end{figure}
+
+For test grading, the best-performing LLM for each Bloom’s 
+cognitive level was selected based on prior validation results. 
+This approach ensured that the strengths of each model were 
+leveraged according to the specific cognitive demands of the 
+question.
+
+In cases where LLMs encountered difficulties with Thai-specific 
+linguistic features, custom Python modules based on the 
+\texttt{PythaiNLP} framework were employed. These modules 
+handled tasks such as syllable counting, word segmentation, 
+and exception handling—for example, correctly segmenting 
+compound words like “Phlaingam” as “Phlai-ngam.” Irregular 
+forms, exceptions, and special cases were documented and 
+stored in Excel for retrieval during evaluation to maintain 
+consistency.
+
+This hybrid system combining LLM scoring, rubric guidance, and 
+language-specific preprocessing enabled accurate, fair, and 
+contextually aware grading for Thai-language written examination 
+questions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Grading Evaluation by Thai Language Teachers}
+
+To evaluate the effectiveness and reliability of the proposed 
+AI-assisted grading system, a separate test set—prepared using 
+the same procedure as the experimental dataset—was independently 
+graded by two professional Thai teachers. One teacher followed 
+the rubric-assisted guidelines, while the other applied 
+professional judgment without relying on the AI-generated rubric. 
+
+The alignment between teacher-assigned scores and AI-generated 
+scores was quantified using Cohen’s Kappa coefficient and the 
+overall score agreement rate. These metrics provided a measure 
+of inter-rater reliability and consistency between human and 
+AI evaluation. 
+
+Discrepancies between teacher and AI scores were further 
+analyzed and categorized into three main sources:
+
+\begin{enumerate}
+    \item \textbf{Rubric Ambiguity}: Cases where the rubric was insufficiently specific, leading to interpretive differences in scoring.
+    \item \textbf{LLM Misinterpretation}: Instances where the model misunderstood the content or reasoning required by the question.
+    \item \textbf{Thai Linguistic Complexity}: Errors caused by Thai-specific language phenomena, including irregular word forms, compound words, or uncommon expressions.
+\end{enumerate}
+
+This analysis allowed for a detailed understanding of the 
+limitations and strengths of both the AI-assisted system and 
+human evaluators, informing subsequent improvements in rubric 
+design, LLM selection, and custom language processing modules.
+
+\subsection{Inter-Rater Reliability and Agreement Metrics}
+
+To quantify the consistency of scoring between evaluators, two 
+metrics were employed: \textbf{Cohen's Kappa} ($\kappa$) and 
+\textbf{Score Agreement Rate}.
+
+\subsubsection{Cohen's Kappa}
+
+Cohen's Kappa measures agreement between two raters while 
+correcting for agreement occurring by chance. It is defined as:
+
+\begin{equation}
+    \kappa = \frac{P_o - P_e}{1 - P_e}
+\end{equation}
+
+where:  
+
+\begin{longtable}{l p{0.8\textwidth}}
+    $P_o$ & is the observed proportion of agreement between the raters. \\
+    $P_e$ & is the expected proportion of agreement by chance, calculated as: \\
+    {} & \vspace{-1.5em}\begin{equation}
+      P_e = \sum_{i=1}^{k} p_{i}^{(1)} \cdot p_{i}^{(2)}
+    \end{equation}\vspace{-1.5em} \\ 
+    {} & with $k$ being the number of score categories, and $p_i^{(1)}$ and $p_i^{(2)}$ representing the proportion of items assigned to category $i$ by rater 1 and rater 2, respectively. \\
+\end{longtable}
+
+The value of $\kappa$ ranges from $-1$ to $1$, where:  
+
+\begin{tabular}{l l}
+    $\kappa = 1$ & indicates perfect agreement. \\
+    $\kappa = 0$ & indicates agreement equivalent to chance. \\
+    $\kappa < 0$ & indicates systematic disagreement. \\
+\end{tabular}
+
+\subsubsection{Score Agreement Rate}
+
+The Score Agreement Rate (SAR) is a direct measure of agreement, 
+defined as the proportion of items for which two evaluators 
+assigned identical scores. Formally, it is expressed as:
+
+\begin{equation}
+    SAR = \frac{N_{\text{match}}}{N_{\text{total}}} \times 100
+\end{equation}
+
+where the variables are defined as follows:
+
+\begin{center}
+\begin{tabular}{l l}
+    $N_{\text{match}}$ & Number of exact score matches between raters or between AI and human \\
+    $N_{\text{total}}$ & Total number of evaluated items (questions) \\
+    $SAR$ & Score Agreement Rate (\%) \\
+\end{tabular}
+\end{center}
+
+This metric provides an intuitive view of raw agreement and 
+serves as a complement to Cohen's Kappa by illustrating the 
+frequency of exact score alignment.
+
+Both SAR and Cohen's Kappa were applied to compare:
+\begin{enumerate}
+    \item AI-generated scores vs. rubric-assisted teacher scores
+    \item AI-generated scores vs. teacher professional judgment scores
+    \item Teacher 1 vs. Teacher 2 scores (inter-rater reliability)
+\end{enumerate}
+
+The combination of these metrics allows for a comprehensive 
+assessment of the grading system’s reliability and consistency 
+across evaluators.

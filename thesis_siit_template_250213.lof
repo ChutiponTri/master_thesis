@@ -1,17 +1,24 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Opportunities and Challenges of LLMs in Educational Assessment. Source: \blx@tocontentsinit {0}\textcite {Vajjala2025}}}{7}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Comparison of Single-Model vs. Ensemble Approaches in LLM Applications}}{8}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Opportunities and Challenges of LLMs in Educational Assessment. Adapted from \blx@tocontentsinit {0}\textcite {Vajjala2025}.}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Consistency evaluation process of (a) semantic, (b) negation, and (c) symmetric consistency on MRPC and (d) transitive consistency on SNLI, adapted from \blx@tocontentsinit {0}\textcite {Jang2023}.}}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Comparison of sentiment intensity regression with other sentiment analysis tasks. The intensity regression approach highlights differences between example sentences, whereas classification and emotion detection yield identical categorical outputs. Adapted from \blx@tocontentsinit {0}\textcite {Lin2024}.}}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Workflow of the Enhanced Sentiment Intensity Regression Model: Input text is processed by the enhanced Roberta model with efficient additive attention and adaptive weighted Huber loss. The output is combined with augmented input data for prompt engineering, followed by fine-tuning of the Llama 3 model using LoRA within the Unsloth framework. Adapted from \blx@tocontentsinit {0}\textcite {Lin2024}.}}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Overview of the QUAD-LLM-MLTC architecture, illustrating the four-model pipeline for multi-label classification. Adapted from \blx@tocontentsinit {0}\textcite {Sakai2025}.}}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Overview of the LLM-TOPLA framework, illustrating diversity-based ensemble selection and adaptive fusion mechanisms. Adapted from \blx@tocontentsinit {0}\textcite {Tekin2024}.}}{18}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Overview of the proposed classifier combination model for Bloom’s-level prediction. Adapted from \blx@tocontentsinit {0}\textcite {Abduljabbar2015}.}}{22}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Schematic architecture of the proposed automated grading system, integrating BERT embeddings, cosine similarity, and Jaccard distance. Adapted from \blx@tocontentsinit {0}\textcite {Dodia2023}.}}{24}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Crossover experimental design comparing MTF and FR question formats in undergraduate biology exams. Adapted from \blx@tocontentsinit {0}\textcite {Hubbard2017}.}}{25}{figure.caption.18}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Sample prompt used to extract key rubric keywords from Thai exam questions via ChatGPT (Please specify three main keywords from the following question to be used as criteria for evaluating and scoring the answer).}}{12}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}}{13}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Sample prompt used to extract key rubric keywords from Thai exam questions via ChatGPT (Please specify three main keywords from the following question to be used as criteria for evaluating and scoring the answer).}}{29}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Methodology for Examination Dataset Preparation, including Teacher Re-labeling based on Bloom's Taxonomy and the Generation and Validation of Assessment Rubrics.}}{29}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Visual representation of the initial set of ten Large Language Models (LLMs) evaluated for suitability in the automated assessment experiment.}}{30}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Prompt used to generate student answers and scores from LLMs (Please create 10 variations of student answers for a single question, with each answer receiving a score from 0 to 3 out of a total of 3 points (in a diverse manner). The results should be presented in plain text format, with each example consisting of: 1. The student’s answer (clearly displayed), 2. The assigned score (indicated as a number from 0 to 3), 3. A clear explanation of the rationale behind the score (explained clearly, without using bullet points or headings).)}}{32}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Prompt template for grading a student’s response with context, rubric, and question provided to the LLM – Grade the student’s answer for a single question, assigning a score from 0 to 3 out of 3. Present the output in plain text, including: (1) the numerical score (0–3), and (2) a clear explanation of the scoring rationale without bullet points or headings}}{33}{figure.caption.23}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Token length analysis of answers by assigned score in the non-rubric set, showing a trend toward verbosity bias among LLM-generated responses.}}{39}{figure.caption.24}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Our institute logos}}{16}{figure.caption.14}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Texmaker Configuration to use Biblatex}}{17}{figure.caption.15}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces TU Logo}}{19}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces SIIT Logo}}{20}{figure.caption.19}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces An analog voltage source.}}{21}{figure.caption.21}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Confusion Matrix Teacher 1 compare to Teacher 2}}{59}{figure.caption.28}%
 \contentsfinish 

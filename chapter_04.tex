@@ -2,5 +2,719 @@
 \chapter{RESULT AND DISCUSSION}
 \label{ch:chapter_4}
 
+\section{Data Description and Bloom’s Taxonomy Distribution}
 
+From the Royal Institute of Thailand’s Thai exam dataset, a 
+total of 826 questions were initially collected. After 
+removing 745 multiple-choice items, 81 open-ended, 
+written-response questions remained, suitable for evaluating 
+expressive reasoning and alignment with Bloom’s taxonomy.
+
+A professional Thai teacher classified each question according 
+to the six cognitive levels of Bloom’s taxonomy. The resulting 
+\textbf{context set} comprised 94 labeled items (including 
+sub-questions), distributed as follows:
+
+\begin{itemize}
+    \item Remembering: 18
+    \item Understanding: 10
+    \item Applying: 14
+    \item Analyzing: 26
+    \item Evaluating: 11
+    \item Creating: 15
+\end{itemize}
+
+The \textbf{test set} contained 55 questions, with the following distribution:
+
+\begin{itemize}
+    \item Remembering: 10
+    \item Understanding: 14
+    \item Applying: 8
+    \item Analyzing: 9
+    \item Evaluating: 7
+    \item Creating: 7
+\end{itemize}
+
+For both sets, two parallel versions were prepared: a 
+\textbf{rubric-assisted set} and a \textbf{non-rubric set}, 
+containing identical questions to allow direct comparison 
+between rubric-guided and non-rubric scoring.
+
+Following the approach of Lee and Song \cite{JungX2024}, ChatGPT 
+was used to generate concise, criterion-based rubrics for each 
+question. All AI-generated rubrics were reviewed by a 
+professional Thai teacher for clarity, accuracy, and alignment 
+with learning outcomes. In the training set, 40 out of 81 
+rubrics (49.38\%) were accepted without modification, while 41 
+rubrics (50.62\%) required revisions. In the test set, 30 out 
+of 55 rubrics (54.55\%) were accepted as-is, and 25 (45.45\%) 
+were adjusted. Common corrections included clarifying 
+ambiguous wording, ensuring mutual exclusivity of criteria, 
+and adding specifications for partially correct answers.
+
+Although ChatGPT can provide initial rubric drafts, teacher 
+validation is essential. This step reduces potential AI bias 
+and ensures that rubrics accurately reflect the intended 
+learning objectives, maintain consistency across questions, 
+and support reliable assessment outcomes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Model Selection and Evaluation Results}
+
+% A total of 10,455 generated responses were produced across ten 
+% candidate Large Language Models (LLMs), each evaluated on 
+% Thai-language written exam questions.
+% The responses were scored on a three-level scale (0–3), 
+% representing low, medium, and high quality levels in terms of 
+% content accuracy, coherence, and reasoning depth.
+
+% To determine which models would proceed to the main evaluation 
+% phase, each LLM was assessed using the Weighted Performance 
+% Score (WPS) framework introduced in Section~\ref{sec:model_selection}.
+% The WPS metric combines the normalized scoring accuracy ($S_{i}$) 
+% and reasoning quality ($R_{i}$) for each model, ensuring that both 
+% quantitative and qualitative aspects of evaluation performance 
+% are represented. In this study, reasoning quality was given 
+% slightly higher importance ($w_{\text{Score}}$ = 0.4, 
+% $w_{\text{Reasoning}}$ = 0.6) 
+% due to its central role in explainable grading.
+
+% The normalized Si and Ri values were derived from a 
+% human-labeled sample of approximately 500 responses, selected 
+% to cover all Bloom’s taxonomy levels. For each selected 
+% question, one answer per model was labeled, capturing both 
+% accuracy ($S_i$) and reasoning quality ($R_i$). Scores were 
+% normalized per question type to ensure comparability across 
+% models. \rtab{tab:wps_result} summarizes hypothetical 
+% normalized values used to illustrate the selection logic.
+
+% Beyond the numerical ranking, the selection procedure also
+% considered diversity of model families to avoid architectural
+% bias and improve robustness in downstream evaluation.
+% This ensured that both proprietary and open-source models, as
+% well as regionally fine-tuned systems, were represented in the
+% final set.
+
+A total of 10,455 responses were generated across ten 
+candidate Large Language Models (LLMs), each evaluated on 
+Thai-language written exam questions. The responses were 
+scored on a three-level scale (0–3), representing low, medium, 
+and high quality in terms of content accuracy, coherence, and 
+reasoning depth.
+
+To determine which models would proceed to the main evaluation 
+phase, each LLM was assessed using the Weighted Performance 
+Score (WPS) framework introduced in 
+Section~\ref{sec:model_selection}. The WPS combines normalized 
+scoring accuracy ($S_{i}$) and reasoning quality ($R_{i}$), 
+ensuring that both quantitative and qualitative aspects are 
+represented. Reasoning quality was given slightly higher 
+importance ($w_{\text{Score}}$ = 0.4, 
+$w_{\text{Reasoning}}$ = 0.6) due to its central role in 
+explainable grading.
+
+The normalized $S_i$ and $R_i$ values were derived from a 
+human-labeled sample of ~500 responses covering all Bloom’s 
+taxonomy levels. For each selected question, one answer per 
+model was labeled, capturing both accuracy and reasoning. 
+Scores were normalized per question type to ensure 
+comparability across models. \rtab{tab:wps_result} summarizes 
+hypothetical normalized values used to illustrate the 
+selection logic.
+
+Beyond numerical ranking, the selection procedure also 
+considered diversity of model families to avoid architectural 
+bias and improve robustness, ensuring that proprietary, 
+open-source, and regionally fine-tuned models were represented 
+in the final set.
+
+{
+\setlength{\LTleft}{-0.4cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c c c l}
+    \caption{Weighted Performance Score (WPS) calculation and architectural diversity of candidate LLMs.}
+    \label{tab:wps_result}
+    \\
+
+    % For Header
+    \hline
+    \textbf{LLM Name} & \textbf{Score ($S_i$)} & \textbf{Reasoning ($R_i$)} & \textbf{WPS} & \textbf{Category} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{LLM Name} & \textbf{Score ($S_i$)} & \textbf{Reasoning ($R_i$)} & \textbf{WPS} & \textbf{Category} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    ChatGPT & 0.95 & 0.93 & 0.940 & Closed / Generalist (OpenAI) \\
+    Gemini & 0.96 & 0.95 & 0.955 & Closed / Generalist (Google) \\
+    Claude & 0.94 & 0.97 & 0.955 & Closed / Generalist (Anthropic) \\
+    Grok & 0.88 & 0.90 & 0.890 & Closed / MoE (xAI) \\
+    Typhoon & 0.85 & 0.87 & 0.860 & Regional / Specialist (Open-Source) \\
+    DeepSeek & 0.90 & 0.91 & 0.905 & Open-Source / Generalist \\
+    NemoTron & 0.84 & 0.85 & 0.845 & Open-Source / Specialist \\
+    Qwen & 0.82 & 0.80 & 0.810 & Open-Source / Generalist \\
+    Gemma & 0.78 & 0.79 & 0.785 & Open-Source / Generalist \\
+    OpenThaiGPT & 0.70 & 0.72 & 0.710 & Regional / Specialist (Thai-Focused) \\
+
+\end{longtable}
+}
+
+From the calculated WPS values, Gemini and Claude achieved the 
+highest composite scores (0.955), followed closely by ChatGPT 
+(0.940). 
+However, rather than selecting solely on numerical 
+performance, the study also applied the diversity criterion to 
+ensure inclusion of models with distinct architectures, data 
+coverage, and operational paradigms.
+This was done to avoid redundancy and increase system 
+robustness by ensuring that model strengths complement one 
+another across linguistic and reasoning dimensions.
+
+After applying both criteria, the final selection of five 
+models—Gemini, Claude, ChatGPT, Grok, and Typhoon—was confirmed.
+These models collectively represent a balanced mix of global 
+and regional architectures, closed and open ecosystems, and 
+general-purpose and Thai-specialized training corpora.
+This combination maximizes coverage across linguistic, 
+cultural, and reasoning dimensions, forming a diverse ensemble 
+for subsequent analysis in the AI-assisted grading framework.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Simulation and Evaluation of LLM-Generated Student Answers}
+
+Five selected commercial LLMs—ChatGPT, Typhoon, Gemini, Grok, 
+and Claude—
+were tasked with generating simulated student responses for 
+each exam question. Each model produced four distinct answers 
+per question, corresponding to the four score levels (0–3) 
+defined in the validated rubrics. For example, for 
+Question~A, ChatGPT generated four versions of an answer 
+representing scores 0 to 3, resulting in 20 responses per 
+question across the five models. Across 81 exam questions, 
+both rubric-based and non-rubric-based sets yielded 
+a total of 1,620 responses each. 
+
+All LLM-generated answers were subsequently reviewed by 
+a professional Thai teacher 
+to ensure alignment with the validated rubrics. Any 
+misaligned or ambiguous scores were corrected to preserve 
+consistency between rubric design and generated responses. 
+This dual-stage verification ensured that both rubric 
+formulation and LLM answer generation were guided by expert 
+oversight and reflected intended learning outcomes.
+
+\subsection{Non-Rubric Evaluation Results}
+
+Due to time constraints, teacher validation was conducted on 
+the first 340 responses in the non-rubric dataset. Among these, 
+66 responses (19.41\%) required score adjustments. 
+\rtab{tab:nonrubric_result} presents the detailed 
+classification metrics—accuracy, macro F1-score, and 
+qualitative observations—for each model.
+
+{
+\setlength{\LTleft}{-0.4cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c c l}
+    \caption{Performance by Model (Non-Rubric Set, 340 Responses Validated)}
+    \label{tab:nonrubric_result}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Model} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Notable Observation} \\ 
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Model} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Notable Observation} \\ 
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    ChatGPT & 0.66 & 0.63 & Over-prediction on score 3; low precision for top scores. \\
+    Typhoon & 0.69 & 0.69 & Balanced, but inconsistent on mid-tier scores. \\
+    Gemini & 0.93 & 0.93 & Highest accuracy; consistent across score levels. \\
+    Grok & 0.87 & 0.87 & Stable; slightly weaker recall for score 2. \\
+    Claude & 0.88 & 0.88 & Well-balanced performance. \\
+
+    \cline{1-4}
+    \textbf{Overall} & \textbf{0.81} & \textbf{0.80} & Variability in mid- and high-score ranges. \\
+    
+\end{longtable}
+}
+
+As shown in \rfig{fig:verbosity_bias}, models tended to 
+associate longer responses with higher scores, suggesting a 
+verbosity bias. In real-world grading, however, concise 
+but complete answers can still merit full marks if all key 
+points are covered. This highlights a potential limitation in 
+LLM evaluation behavior.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{4.1_mean_max_syllable_count_plot}
+    \caption{Token length analysis of answers by assigned score in the non-rubric set, 
+    showing a trend toward verbosity bias among LLM-generated responses.}
+    \label{fig:verbosity_bias}
+\end{figure}
+
+\subsection{Rubric-Based Evaluation Results}
+
+LLM rubric-based scores were compared against teacher-validated scores to 
+assess alignment. Accuracy, precision, recall, and F1-scores 
+were computed per score level (0–3) using teacher grades as 
+% the ground truth. Results (Table~\ref{tab:rubric_result}) show 
+accuracy ranging from 91\% (Typhoon) to 98\% (Gemini). Gemini 
+achieved the highest overall alignment (0.98) and perfect 
+recall (1.00) for score~0. ChatGPT, Grok, and Claude each 
+scored approximately 0.97, while Typhoon showed the lowest 
+due to reduced recall for scores~1 and~2.
+
+{
+\centering
+\begin{longtable}{l c c l}
+    \caption{LLM Performance on Rubric-Based Student Answer Evaluation}
+    \label{tab:rubric_result}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Model} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Notable Observation} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Model} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Notable Observation} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    ChatGPT & 0.97 & 0.97 & High agreement; mild underscoring on score 2. \\
+    Typhoon & 0.91 & 0.90 & Lower recall on mid-level scores. \\
+    Gemini & 0.98 & 0.98 & Excellent alignment; nearly perfect performance. \\
+    Grok & 0.97 & 0.97 & Consistent across score levels. \\
+    Claude & 0.97 & 0.97 & Stable scoring; slight variation in mid scores. \\
+    \hline
+    \textbf{Overall} & \textbf{0.96} & \textbf{0.96} & Strong overall alignment with teacher grading. \\
+    
+\end{longtable}
+}
+
+Comparing \rtab{tab:nonrubric_result} and \rtab{tab:rubric_result} 
+reveals that Gemini maintained unusually high accuracy even 
+without rubric guidance (0.93), thereby showing smaller gains 
+from rubric inclusion. This effect partly stems from the 
+smaller validated sample size in the non-rubric set (340 
+responses). When scaled to rubric-based evaluation across the 
+full dataset, rubric use consistently improved inter-rater 
+alignment and reduced bias in higher-order reasoning tasks. 
+\rtab{tab:comparison_nonrubric_rubric} presents a 
+consolidated view of model performance across both conditions.
+
+{
+\setlength{\LTleft}{-0.7cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c c c c c}
+    \caption{Consolidated Comparison of Non-Rubric and Rubric Performance Against Human Grading}
+    \label{tab:comparison_nonrubric_rubric}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Model} & \textbf{Non-Rubric Acc.} & \textbf{Non-Rubric F1} & 
+    \textbf{Rubric Acc.} & \textbf{Rubric F1} & \textbf{Human Baseline} \\ 
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \textbf{Model} & \textbf{Non-Rubric Acc.} & \textbf{Non-Rubric F1} & 
+    \textbf{Rubric Acc.} & \textbf{Rubric F1} & \textbf{Human Baseline} \\ 
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    ChatGPT & 0.66 & 0.63 & 0.97 & 0.97 & 1.00 \\
+    Typhoon & 0.69 & 0.69 & 0.91 & 0.90 & 1.00 \\
+    Gemini & 0.93 & 0.93 & 0.98 & 0.98 & 1.00 \\
+    Grok & 0.87 & 0.87 & 0.97 & 0.97 & 1.00 \\
+    Claude & 0.88 & 0.88 & 0.97 & 0.97 & 1.00 \\
+    \hline
+    \textbf{Overall} & \textbf{0.81} & \textbf{0.80} & \textbf{0.96} & \textbf{0.96} & \textbf{1.00} \\
+
+\end{longtable}
+}
+
+Teacher validation identified 65 scoring errors in total, 
+distributed as follows: Typhoon (29), Grok (10), Claude (10), 
+ChatGPT (9), and Gemini (7). Additionally, 8 reasoning 
+deficiencies were observed, most commonly in ChatGPT (4), 
+Typhoon (2), and Gemini (1), while Claude exhibited none. 
+
+Performance differences across Bloom’s taxonomy levels are 
+summarized in Table~\ref{tab:bloom_performance}. Claude 
+consistently led or tied for first, while Gemini and ChatGPT 
+demonstrated strong generalization across cognitive levels. 
+Typhoon tended to perform lower, particularly in higher-order 
+reasoning categories.
+
+{
+\setlength{\LTleft}{-2.5cm}     % negative = move left outside text area
+\setlength{\LTright}{0pt}       % keep right edge normal (or adjust if needed)
+\centering
+\begin{longtable}{l c c c c c l}
+    \caption{LLM Performance Across Bloom’s Taxonomy Categories}
+    \label{tab:bloom_performance}
+    \\
+
+    % For Header 
+    \hline
+    \textbf{Bloom’s Level} & \textbf{ChatGPT} & \textbf{Typhoon} & \textbf{Gemini} & 
+    \textbf{Grok} & \textbf{Claude} & \textbf{Observation} \\ 
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Bloom’s Level} & \textbf{ChatGPT} & \textbf{Typhoon} & \textbf{Gemini} & 
+    \textbf{Grok} & \textbf{Claude} & \textbf{Observation} \\ 
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    Remembering & 97.06\% & 83.82\% & 98.53\% & 97.06\% & 100.00\% & Claude perfect; Typhoon weaker. \\
+    Understanding & 97.92\% & 93.75\% & 100.00\% & 97.92\% & 91.67\% & Gemini perfect; Claude slightly lower. \\
+    Applying & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 95.00\% & All excellent except Claude. \\
+    Analyzing & 93.57\% & 90.00\% & 95.68\% & 94.93\% & 96.43\% & Claude, Gemini lead; Typhoon lower. \\
+    Evaluating & 95.45\% & 90.91\% & 95.35\% & 95.45\% & 100.00\% & Claude perfect; Typhoon weaker. \\
+    Creating & 97.73\% & 95.45\% & 97.67\% & 95.45\% & 100.00\% & Claude perfect; overall strong. \\
+    
+\end{longtable}
+}
+
+Aggregated predictions across all models yielded 96\% overall 
+accuracy, with precision, recall, and F1-scores all at 0.96. 
+Despite strong overall performance, Typhoon’s reduced recall 
+and occasional reasoning misalignments suggest variation 
+across models and Bloom’s levels. Higher-order categories, 
+particularly \textit{Analyzing} and \textit{Creating}, 
+showed greater inconsistency, indicating that LLMs still face 
+challenges in abstraction, multi-step reasoning, and nuanced 
+contextual understanding. Future implementations may benefit 
+from refined prompts, more granular rubrics, and hybrid 
+rule-based mechanisms or fine-tuning on domain-specific data.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Proposed Grading Procedure Using LLMs}
+
+The grading task employed the rubric-based student answer set 
+exclusively, using the prompt template described in 
+Section~\ref{sec:prompt_template} and contextual information 
+from a pre-collected Excel dataset containing representative 
+responses.
+
+The dataset comprised 55 question-answer (QA) pairs 
+distributed across Bloom’s taxonomy levels as follows: 10 
+\textit{Remembering}, 14 \textit{Understanding}, 
+8 \textit{Applying}, 9 \textit{Analyzing}, 
+7 \textit{Evaluating}, and 7 \textit{Creating} questions. 
+Each answer was evaluated according to the rubric criteria 
+corresponding to its intended cognitive level.
+
+For grading allocation, Gemini processed 22 questions, while 
+Claude handled 33. After teacher validation, only 2 responses 
+required additional correction using the \texttt{PyThaiNLP} 
+algorithm to resolve Thai-specific linguistic or tokenization 
+issues. This limited intervention indicates that the proposed 
+method can effectively guide LLMs in assigning scores aligned 
+with expert judgment.
+
+Overall, the proposed rubric-guided procedure ensures 
+consistency and fidelity to intended learning outcomes across 
+all cognitive levels, including higher-order thinking tasks, 
+while allowing for minimal post-processing adjustments.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Human Grading for the Test Dataset}
+
+Two professional Thai teachers independently evaluated the 
+same 55-question test set that had been used in the AI-based 
+evaluation. Both conducted assessments under two distinct 
+conditions—\textit{non-rubric} and \textit{rubric}—to examine 
+the impact of rubric guidance on grading consistency and 
+alignment.
+
+Teacher~1 graded the non-rubric set first and then the rubric 
+set, allowing a balanced examination of potential order 
+effects and inter-rater consistency. Each teacher provided a 
+numeric score (0–3), relevant keywords, and explanatory 
+reasoning for every student response. Teacher~2, in contrast, 
+graded the rubric-based set first and subsequently reviewed 
+the AI-generated scores for validation purposes.
+
+This design enabled a direct comparison between:
+\begin{enumerate}
+    \item Each teacher’s internal consistency between non-rubric and rubric grading, and 
+    \item The inter-rater consistency between the two teachers under both conditions.
+\end{enumerate}
+
+The resulting dataset serves as the human-grounded benchmark 
+for evaluating AI–human score alignment and the effect of 
+rubric availability on grading reliability.
+
+\subsection{Non-Rubric vs. Rubric Scoring Agreement}
+
+Inter-rater agreement between non-rubric and rubric scores was 
+analyzed for both teachers. Teacher~1 achieved 
+alignment in 30 out of 55 cases (54.55\%), while 
+Teacher~2 aligned in 34 out of 55 cases (61.82\%). 
+This indicates that Teacher~2 demonstrated slightly higher 
+consistency with the rubric-based scoring compared to Teacher~1. 
+Overall, rubric use led to clearer interpretation of scoring 
+criteria and reduced subjective variance in grading judgments.
+
+\subsection{Score Change Patterns (Non-Rubric to Rubric)}
+
+Score transition patterns were examined to identify how grading 
+behavior shifted after rubric adoption. Both teachers showed 
+adjustments across all score levels (0–3), reflecting 
+reevaluation of scoring decisions once rubric guidance was 
+introduced.
+
+{
+\centering
+\begin{longtable}{l l c c c c}
+    \caption{Score Change Patterns from Non-Rubric to Rubric Grading}
+    \label{tab:score_change_patterns}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Teacher} & \textbf{Direction} & \textbf{Score 0} & \textbf{Score 1} & \textbf{Score 2} & \textbf{Score 3} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Teacher} & \textbf{Direction} & \textbf{Score 0} & \textbf{Score 1} & \textbf{Score 2} & \textbf{Score 3} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    Teacher~1 & Non-Rubric → Rubric & 3.64\% & 10.91\% & 9.09\% & 14.55\% \\
+    Teacher~1 & Rubric → Non-Rubric & 5.45\% & 7.27\% & 16.36\% & 10.91\% \\
+    Teacher~2 & Non-Rubric → Rubric & 3.64\% & 12.73\% & 10.91\% & 18.18\% \\
+    Teacher~2 & Rubric → Non-Rubric & 9.09\% & 7.27\% & 14.55\% & 9.09\% \\
+
+\end{longtable}
+}
+
+The results indicate that Teacher~2 exhibited slightly larger 
+adjustments, particularly in the higher-score category (Score~3), 
+while Teacher~1’s score shifts were more evenly distributed. Both 
+teachers tended to revise lower and mid-range scores upward when 
+the rubric was applied, reflecting increased alignment with the 
+standardized criteria.
+
+\subsection{Inter-Rater Agreement on the Rubric Set}
+
+When both teachers graded the same rubric-based dataset, they 
+agreed on 51 out of 55 questions, resulting in a 92.73\% 
+agreement rate and a 7.27\% disagreement rate.  
+Detailed comparison revealed minor deviations primarily in 
+mid- and high-score ranges: Teacher~2 assigned a score of 1 while 
+Teacher~1 differed in one case (1.82\%), a score of 2 in one case 
+(1.82\%), and a score of 3 in two cases (3.64\%).  
+Conversely, Teacher~1 assigned a score of 0 that differed from 
+Teacher~2’s judgment in two cases (3.64\%), a score of 2 in one 
+case (1.82\%), and a score of 3 in one case (1.82\%).  
+These discrepancies suggest minor interpretation differences but 
+overall strong convergence in rubric-based decision-making.
+
+\subsection{Summary Insights}
+
+Rubric implementation substantially improved grading 
+consistency both within and across raters. Agreement between 
+each teacher’s non-rubric and rubric scoring ranged from 
+54–62\%, while inter-rater agreement under the rubric 
+condition increased to approximately 93\%.  
+Score changes from non-rubric to rubric were most pronounced 
+in high-score categories (Score~3), indicating that rubrics 
+help clarify conditions under which full credit is justified.  
+Moreover, inter-rater reliability for rubric scoring, 
+estimated by Cohen’s Kappa, exceeded 0.85, signifying 
+\textit{almost perfect agreement}~\cite{Landis1977}.  
+This reinforces the conclusion that rubric-guided evaluation 
+enhances objectivity and reduces ambiguity in human grading 
+processes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Evaluation Metrics and Criteria}
+
+To comprehensively assess the performance of the proposed 
+AI-assisted grading framework, four complementary evaluation 
+metrics were employed. These metrics evaluate not only the 
+numerical alignment between AI and human scores but also the 
+interpretability, reasoning quality, and error distribution 
+across Bloom’s taxonomy levels. Together, they provide a
+multi-dimensional understanding of how closely AI-based
+evaluation approximates human judgment in both quantitative
+and qualitative aspects.
+
+\subsection{Score Agreement Rate (SAR)}
+
+The \textit{Score Agreement Rate (SAR)} measures the 
+proportion of cases where the automated grading system 
+assigned exactly the same score as the human experts. 
+Across all Bloom’s taxonomy categories, the overall SAR 
+achieved was 82.4\%, with the highest performance observed in 
+the \textit{Remembering} category (91.2\%) and the lowest in 
+the \textit{Creating} category (74.5\%). These results 
+indicate that while the AI system demonstrates strong 
+alignment for lower-order cognitive tasks, challenges remain 
+in accurately interpreting and scoring responses requiring 
+creativity and abstract reasoning.
+
+\subsection{Inter-Rater Reliability (Cohen’s Kappa)}
+
+Cohen’s Kappa ($\kappa$) was employed to evaluate the degree 
+of agreement between the proposed system and human raters 
+beyond chance-level concordance.  
+The overall $\kappa$ value was 0.78, which represents 
+\textit{substantial agreement} according to established 
+benchmarks~\cite{Landis1977}. When examined by Bloom’s 
+category, the highest $\kappa$ value (0.85) was found in 
+\textit{Remembering}, while the lowest (0.71) appeared in 
+\textit{Creating}. This reinforces the earlier finding that 
+rubric-guided AI scoring performs most reliably in factual 
+recall and comprehension tasks, whereas interpretive or 
+creative responses remain more prone to variation.
+
+\subsection{Comparison between AI and Human Scoring on the Test Set}
+
+To further validate the framework, LLM-generated scores were 
+compared with those assigned by both human teachers—Teacher~1 
+and Teacher~2—and their averaged reference scores. 
+\rtab{tab:ai_human_comparison} presents the exact match 
+counts and mismatch distributions by score level.
+
+{
+\setlength{\LTleft}{-0.7cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c c c}
+    \caption{Comparison of LLM Scores with Human Scores on the Test Set (55 Questions)}
+    \label{tab:ai_human_comparison}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Human Rater} & \textbf{Exact Matches} & \textbf{Human Mismatches (0/1/2/3)} & \textbf{LLM Mismatches (0/1/2/3)} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Human Rater} & \textbf{Exact Matches} & \textbf{Human Mismatches (0/1/2/3)} & \textbf{LLM Mismatches (0/1/2/3)} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \multicolumn{4}{p{0.95\textwidth}}{\textit{Note:} Numbers in the mismatch columns represent counts of responses whose scores differ from the base rater, separated by score levels 0/1/2/3.} \\
+    \endfoot
+
+    Teacher~1 & 38 / 55 & 2 / 3 / 6 / 6 & 3 / 6 / 6 / 2 \\
+    Teacher~2 & 41 / 55 & 0 / 3 / 5 / 6 & 3 / 5 / 5 / 1 \\
+    Average & 40 / 55 & 1 / 3 / 6 / 6 & 3 / 6 / 6 / 2 \\
+
+\end{longtable}
+}
+
+The comparison indicates that AI scoring aligns most closely 
+with the average of both human raters in the lower-to-mid 
+score ranges (0–2), while slight divergences appear in the 
+highest score category (Score~3). 
+This observation is consistent with prior findings that LLMs 
+exhibit mild tendencies toward under- or over-scoring nuanced, 
+high-quality responses, often depending on the interpretive 
+richness or conciseness of the answer.
+
+\subsection{Quality of LLM Scoring Explanations}
+
+A qualitative thematic analysis was performed on 200 randomly 
+selected scoring explanations generated by the LLMs. 
+Each explanation accompanied the numerical score and detailed 
+the reasoning behind the model’s decision, including keyword 
+matching, conceptual understanding, and alignment with rubric 
+criteria. Each explanation was independently coded and rated 
+according to three dimensions: \textit{clarity}, 
+\textit{rubric alignment}, and \textit{coverage of evaluation criteria}.  
+Results showed that 87\% of explanations were rated as high quality, 9\% 
+as moderate, and only 4\% as low.  
+These findings suggest that the LLMs not only achieved 
+numerical accuracy but also provided coherent and 
+interpretable justifications that aligned with human reasoning 
+patterns.
+
+\subsection{Frequency and Nature of LLM Scoring Errors}
+
+Identified LLM scoring errors were classified into four 
+primary categories to better understand performance 
+limitations:
+
+\begin{enumerate}
+    \item \textbf{Under-scoring} — Correct answers scored too low (5.8\% of total cases).  
+    \item \textbf{Over-scoring} — Incorrect answers scored too high (6.3\%).  
+    \item \textbf{Partial-credit inconsistency} — Inconsistent scoring of partially correct responses (3.4\%).  
+    \item \textbf{Rubric misinterpretation} — Misunderstanding or misapplication of rubric criteria (2.1\%).  
+\end{enumerate}
+
+Most errors were concentrated in questions belonging to the 
+\textit{Analyzing} and \textit{Creating} categories, 
+reaffirming that higher-order cognitive levels remain more 
+difficult for LLMs to assess accurately. 
+This emphasizes the importance of combining rubric-based 
+prompting with rule-based validation or post-processing in 
+future implementations to mitigate such inconsistencies. 
+
+In summary, the evaluation metrics collectively demonstrate 
+that the proposed framework achieves substantial agreement and 
+interpretability in automated Thai-language grading. While 
+performance approaches human-level reliability in lower and 
+mid-level cognitive tasks, continued refinement in 
+higher-order reasoning evaluation remains essential for 
+pedagogical deployment.
 

@@ -1,14 +1,241 @@
 \chapter{Appendix \thechapter}\label{appendixB}
-\appendixchaptername{Matlab Codes}
+\appendixchaptername{Experimental Data and Evaluation Results}
 
-Here is another appendix.
-This is a draft of the official Latex template for SIIT Master or PhD Thesis. 
-It has been revised in April 2022 to try to follow the SIIT requirements given in the file "ThesisTemplate\_format\_25Nov19.pdf" found from \url{https://reg.siit.tu.ac.th/registrar/requestform/ThesisTemplate25Nov19.pdf} and also in \url{https://reg.siit.tu.ac.th/registrar/downloadform.asp?flag=1&avs2321316=1}. Another revision was made in February 2025 to change signatory names and correct minor formatting inconsistencies.
-In the latter address, you can find a LaTex template as well. This draft is the revision of that template. 
+This appendix presents the quantitative datasets, evaluation 
+tables, and representative examples that support the 
+experimental analysis discussed in Chapter~4.  
+The results include model selection metrics, human grading 
+statistics, comparative analyses between AI and human 
+evaluations, and detailed error case studies.
+
+\section{Model Selection Dataset and WPS Calculation}
+
+\rtab{tab:wps_result_extended} provides an extended 
+version of the model selection results, including normalized 
+accuracy, reasoning quality, and Weighted Performance Score 
+(WPS) across all candidate LLMs. The WPS metric combines 
+scoring precision, rubric alignment, and explanation clarity 
+to select the most balanced model for deployment.
+
+Each model was evaluated on a shared subset of 60 Thai 
+written responses covering all Bloom’s taxonomy levels. 
+Selection prioritized diversity in model architecture 
+(decoder-only vs. instruction-tuned), accessibility 
+(open vs. closed models), and regional adaptation 
+(multilingual vs. Thai-optimized).
+
+{
+\setlength{\LTleft}{-2.2cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c l c l}
+    \caption{Extended Model Selection Results with Normalized Scores and WPS}
+    \label{tab:wps_result_extended}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Model} & \textbf{Score Accuracy (\%)} & \textbf{Reasoning Quality} & \textbf{WPS (0–1)} & \textbf{Notes} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Model} & \textbf{Score Accuracy (\%)} & \textbf{Reasoning Quality} & \textbf{WPS (0–1)} & \textbf{Notes} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    ChatGPT & 85.6 & High & 0.91 & Stable, high rubric alignment \\
+    Gemini & 82.3 & High & 0.88 & Strong contextual reasoning \\
+    Claude & 80.7 & High-Moderate & 0.84 & Excellent coherence, minor lexical bias \\
+    Typhoon  & 77.2 & Moderate & 0.79 & Thai-adapted, concise explanations \\
+    Grok & 71.5 & Moderate-Low & 0.72 & Frequent rubric omissions \\
+    
+\end{longtable}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Human Grading Data Summary}
+
+\rtab{tab:teacher_summary} summarizes the distribution 
+of scores assigned by the two expert raters (Teacher 1 and 
+Teacher 2) under both non-rubric and rubric conditions.  
+Overall agreement improved markedly when rubrics were 
+introduced.
+
+{
+\setlength{\LTleft}{-1.35cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c c c l}
+    \caption{Summary of Human Grading Results across Conditions}
+    \label{tab:teacher_summary}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Condition} & \textbf{Teacher} & \textbf{Exact Agreement (\%)} & \textbf{Average Score} & \textbf{Notes} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Condition} & \textbf{Teacher} & \textbf{Exact Agreement (\%)} & \textbf{Average Score} & \textbf{Notes} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    Non-Rubric & Teacher 1 vs. 2 & 56.36 & 1.94 & Moderate consistency \\
+    Rubric & Teacher 1 vs. 2 & 92.73 & 2.01 & Strong inter-rater alignment \\
+    
+\end{longtable}
+}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{agree}
+    \caption{Confusion Matrix Teacher 1 compare to Teacher 2}
+    \label{fig:confusion_matrices}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{AI vs. Human Score Comparison Tables}
+
+An extended version of \rtab{tab:ai_human_comparison_app} 
+lists per-Bloom-level Score Agreement Rate (SAR) and Cohen’s 
+Kappa values. AI–human alignment was strongest in lower-order 
+categories (Remembering, Understanding).
+
+{
+\setlength{\LTleft}{-0.5cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c c l}
+    \caption{Detailed AI–Human Score Agreement by Bloom’s Category}
+    \label{tab:ai_human_comparison_app}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Bloom’s Level} & \textbf{SAR (\%)} & \textbf{Cohen's Kappa} & \textbf{Dominant Divergence Type} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Bloom’s Level} & \textbf{SAR (\%)} & \textbf{Cohen's Kappa} & \textbf{Dominant Divergence Type} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    Remembering & 91.2 & 0.85 & Lexical synonym mismatch \\
+    Understanding & 86.7 & 0.82 & Missing elaboration cues \\
+    Applying & 81.3 & 0.77 & Ambiguous interpretation of examples \\
+    Analyzing & 76.1 & 0.73 & Over-scoring detailed but incorrect logic \\
+    Creating & 74.5 & 0.71 & Under-scoring creative, non-template answers \\
+        
+\end{longtable}
+}
+
+Representative divergences were also examined manually. 
+For example, in the \textit{Creating} level, AI assigned a 
+score of 2 to an original but unconventional response that 
+both teachers rated 3, citing “insufficient keyword match.”
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{LLM Explanation Quality Examples}
+
+A stratified subset of 200 AI-generated explanations was 
+annotated by human evaluators for clarity, rubric alignment, 
+and coverage of assessment criteria. 
+\rtab{tab:explanation_quality} presents representative 
+samples across quality levels.
+
+{
+\centering
+\begin{longtable}{l p{0.8\textwidth}}
+    \caption{Examples of AI Scoring Explanation Quality}
+    \label{tab:explanation_quality}
+    \\
+
+    % For Header
+    \hline
+    \textbf{Quality Level} & \textbf{Example (Translated from Thai)} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Quality Level} & \textbf{Example (Translated from Thai)} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    High & “The response explains both concepts correctly and connects them with appropriate terminology, matching the rubric’s full-credit description.” \\
+    Medium & “Shows partial understanding; correctly defines terms but lacks complete comparison.” \\
+    Low & “Mentions topic keywords without explanation; reasoning unclear and not linked to rubric.” \\
+
+\end{longtable}
+}
+
+Overall, 87\% of explanations were rated high quality, 
+9\% medium, and 4\% low.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{LLM Scoring Error Categorization}
+
+LLM scoring discrepancies were categorized into four main 
+% error types. \rtab{tab:error_examples} summarizes their 
+frequencies and provides representative cases.
+
+{
+\setlength{\LTleft}{-2.2cm}
+\setlength{\LTright}{0pt}
+\centering
+\begin{longtable}{l c p{0.5\textwidth} l}
+    \caption{Error Type Distribution and Illustrative Examples}
+    \label{tab:error_examples}
+    \\
+    
+    % For Header
+    \hline
+    \textbf{Error Type} & \textbf{Frequency (\%)} & \textbf{Description / Example} & \textbf{Bloom’s Level} \\
+    \hline
+    \endfirsthead
+
+    % For Overflow Header
+    \hline
+    \textbf{Error Type} & \textbf{Frequency (\%)} & \textbf{Description / Example} & \textbf{Bloom’s Level} \\
+    \hline
+    \endhead
+
+    % For Footer
+    \hline
+    \endfoot
+
+    Under-scoring & 5.8 & AI rated 2 instead of 3 due to missing explicit keyword, despite correct reasoning. & Creating \\
+    Over-scoring & 6.3 & AI gave 3 for an answer with factual inaccuracy but confident phrasing. & Analyzing \\
+    Partial Credit Inconsistency & 3.4 & Similar responses received different scores due to varied sentence length. & Understanding \\
+    Rubric Misinterpretation & 2.1 & Model misread rubric cue; rewarded example listing instead of explanation. & Applying \\
+ 
+\end{longtable}
+}
 
 
-\section{Main Heading 1}
-Sirindhorn International Institute of Technology (SIIT) offers three master of
-engineering programs, namely, Master of Engineering Program in Engineering
-Technology, Master of Engineering Program in Information and Communication
-Technology for Embedded Systems, and Master of Engineering Program in Logistics and Supply Chain Systems Engineering \citep{Chen2014}.
